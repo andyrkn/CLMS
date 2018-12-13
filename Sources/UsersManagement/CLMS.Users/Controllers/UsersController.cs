@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-using CLMS.Users.Bussines;
+﻿using Microsoft.AspNetCore.Mvc;
+using CLMS.Users.Business;
+using MediatR;
 
 namespace CLMS.Users.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseApiController
     {
-
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> GetAll()
+        public UsersController(IMediator mediator) 
+            : base(mediator)
         {
-            return new string[] {};
         }
-        
+
         [HttpPost]
-        public void Add([FromBody] UserModel user)
+        public IActionResult Register([FromBody] UserModel user)
         {
-
+            var result = DispatchCommand(new RegisterUserCommand(user));
+            return result.AsActionResult(Ok);
         }
-
     }
 }

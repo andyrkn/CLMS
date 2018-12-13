@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -6,12 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="6.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CLMS.Users.Bussines\CLMS.Users.Bussines.csproj" />
+    <ProjectReference Include="..\CLMS.Users.Business\CLMS.Users.Business.csproj" />
+    <ProjectReference Include="..\CLMS.Users.CrossCuttingConcerns\CLMS.Users.CrossCuttingConcerns.csproj" />
     <ProjectReference Include="..\CLMS.Users.Persistance\CLMS.Users.Persistance.csproj" />
     <ProjectReference Include="..\CLMS.Users.Domain\CLMS.Users.Domain.csproj" />
   </ItemGroup>
