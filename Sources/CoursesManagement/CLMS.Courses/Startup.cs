@@ -27,7 +27,7 @@ namespace CLMS.Courses
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CoursesContext>(o => o.UseSqlServer(Configuration.GetConnectionString("Courses")));
+            services.AddDbContext<CoursesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Courses")));
             services.AddAutoMapper(typeof(BusinessLayer).Assembly);
             services.AddMediatR(typeof(BusinessLayer).Assembly);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
