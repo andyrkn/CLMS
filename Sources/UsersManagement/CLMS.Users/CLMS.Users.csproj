@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
     <PackageReference Include="MediatR" Version="6.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -15,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CLMS.Users.Business\CLMS.Users.Business.csproj" />
     <ProjectReference Include="..\CLMS.Users.CrossCuttingConcerns\CLMS.Users.CrossCuttingConcerns.csproj" />
+    <ProjectReference Include="..\CLMS.Users.DependencyInjection\CLMS.Users.DependencyInjection.csproj" />
     <ProjectReference Include="..\CLMS.Users.Persistance\CLMS.Users.Persistance.csproj" />
     <ProjectReference Include="..\CLMS.Users.Domain\CLMS.Users.Domain.csproj" />
   </ItemGroup>

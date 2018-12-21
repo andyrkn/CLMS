@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
+using CLMS.Users.CrossCuttingConcerns;
 using CLMS.Users.Domain;
 using CLMS.Users.Persistance;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -68,6 +71,14 @@ namespace CLMS.Users
                     .Build();
             });
 
+            return services;
+        }
+
+        public static IServiceCollection AddDomainEventsDispatcher(this IServiceCollection services)
+        {
+            services.AddSingleton<IMessageBus, RabbitMqBus>();
+            services.AddSingleton<IMessageBusListener, RabbitMqBusListener>();
+            services.AddTransient<IDomainEventsDispatcher, DomainEventsDipatcher>();
             return services;
         }
     }

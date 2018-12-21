@@ -1,4 +1,8 @@
-﻿using CLMS.Users.Business;
+﻿using System;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using CLMS.Users.Business;
+using CLMS.Users.DependencyInjection;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,7 +38,15 @@ namespace CLMS.Users
                 });
             });
             services.AddTransient<JwtProvider>();
+            services.AddDomainEventsDispatcher();
+
+            services.AddSingleton(_ => Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule<AutofacIocContainer>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -48,6 +60,7 @@ namespace CLMS.Users
                 app.UseHsts();
             }
 
+            app.UseEventsHandlerForMessageBusEvents();
             app.UseMiddleware<JwtMiddleware>();
             app.UseCors(UsersPolicy);
             app.UseHttpsRedirection();
