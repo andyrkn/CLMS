@@ -32,8 +32,12 @@ namespace CLMS.Courses
             services.AddMediatR(typeof(BusinessLayer).Assembly);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<ICoursesRepository, CoursesRepository>();
-        } 
-        
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My API", Version = "v1" });
+            });
+        }
+     
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -46,6 +50,12 @@ namespace CLMS.Courses
             }
 
             app.UseCors(CoursesPolicy);
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
             app.UseMvc();
         }
     }

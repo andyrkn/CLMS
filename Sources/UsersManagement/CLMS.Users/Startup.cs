@@ -42,6 +42,10 @@ namespace CLMS.Users
 
             services.AddSingleton(_ => Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My API", Version = "v1" });
+            });
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -64,7 +68,17 @@ namespace CLMS.Users
             app.UseMiddleware<JwtMiddleware>();
             app.UseCors(UsersPolicy);
             app.UseHttpsRedirection();
+
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
             app.UseMvc();
+
         }
     }
 }
