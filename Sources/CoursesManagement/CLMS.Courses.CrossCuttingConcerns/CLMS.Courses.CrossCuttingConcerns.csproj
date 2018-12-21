@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -9,8 +9,4 @@
     <PackageReference Include="MediatR" Version="6.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CLMS.Users.CrossCuttingConcerns\CLMS.Users.CrossCuttingConcerns.csproj" />
-    <ProjectReference Include="..\CLMS.Users.Domain\CLMS.Users.Domain.csproj" />
-  </ItemGroup>
 </Project>
