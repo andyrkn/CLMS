@@ -1,10 +1,9 @@
-﻿using CLMS.Users.CrossCuttingConcerns;
-using CSharpFunctionalExtensions;
+﻿using CSharpFunctionalExtensions;
 using EnsureThat;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CLMS.Users.Controllers
+namespace CLMS.Kernel
 {
     public class BaseApiController : ControllerBase
     {

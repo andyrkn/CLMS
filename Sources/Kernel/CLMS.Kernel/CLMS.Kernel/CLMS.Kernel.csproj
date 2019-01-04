@@ -1,21 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <PackageId>CLMS.Kernel</PackageId>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="CSharpFunctionalExtensions" Version="1.14.0" />
     <PackageReference Include="Ensure.That" Version="8.1.0" />
     <PackageReference Include="MediatR" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="RabbitMQ.Client" Version="5.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Ensure.That">
-      <HintPath>..\..\..\..\..\Users\Sergiu\.nuget\packages\ensure.that\8.1.0\lib\netstandard2.0\Ensure.That.dll</HintPath>
-    </Reference>
+    <Folder Include="DomainEvents\" />
   </ItemGroup>
 
 </Project>

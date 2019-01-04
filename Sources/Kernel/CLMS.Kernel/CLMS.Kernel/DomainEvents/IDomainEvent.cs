@@ -1,4 +1,4 @@
-﻿namespace CLMS.Users.CrossCuttingConcerns
+﻿namespace CLMS.Kernel
 {
     public interface IDomainEvent
     {

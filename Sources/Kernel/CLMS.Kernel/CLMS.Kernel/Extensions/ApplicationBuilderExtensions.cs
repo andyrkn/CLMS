@@ -1,25 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Autofac;
-using CLMS.Users.Business;
-using CLMS.Users.CrossCuttingConcerns;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CLMS.Users
+namespace CLMS.Kernel
 {
     public static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UseEventsHandlerForMessageBusEvents(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseMessageBusForDomainEvents(this IApplicationBuilder builder, params Assembly[] assemblies)
         {
             var serviceProvider = builder.ApplicationServices;
-
             var messageBusListener = serviceProvider.GetService<IMessageBusListener>();
-            var businessLayer = typeof(BusinessLayer).Assembly;
-            var handlers = businessLayer.GetTypes().Where(x => x.IsClosedTypeOf(typeof(IDomainEventHandler<>)));
-            foreach (var handler in handlers)
+
+            foreach (var assembly in assemblies)
             {
-                messageBusListener.ListenTo(handler.EventTypeFromEventHandler(), handler);
+                var handlers = assembly.GetTypes().Where(x => x.IsClosedTypeOf(typeof(IDomainEventHandler<>)));
+                foreach (var handler in handlers)
+                {
+                    messageBusListener.ListenTo(handler.EventTypeFromEventHandler(), handler);
+                }
             }
 
             return builder;

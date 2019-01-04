@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CLMS.Kernel" Version="1.0.2" />
     <PackageReference Include="CSharpFunctionalExtensions" Version="1.14.0" />
     <PackageReference Include="MediatR" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CLMS.Users.CrossCuttingConcerns\CLMS.Users.CrossCuttingConcerns.csproj" />
     <ProjectReference Include="..\CLMS.Users.Domain\CLMS.Users.Domain.csproj" />
   </ItemGroup>
 </Project>

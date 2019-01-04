@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CLMS.Kernel;
+using Microsoft.AspNetCore.Mvc;
 using CLMS.Users.Business;
 using MediatR;
 

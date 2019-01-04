@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
 
-namespace CLMS.Users.CrossCuttingConcerns
+namespace CLMS.Kernel
 {
     public interface ICommand : IRequest<Result>
     {

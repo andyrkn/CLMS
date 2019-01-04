@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="CLMS.Kernel" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>

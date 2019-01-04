@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using RabbitMQ.Client;
 
-namespace CLMS.Users.CrossCuttingConcerns
+namespace CLMS.Kernel
 {
-    public class RabbitMqBus : IMessageBus
+    internal class RabbitMqBus : IMessageBus
     {
         private readonly IModel channel;
         private const string HostName = "localhost";

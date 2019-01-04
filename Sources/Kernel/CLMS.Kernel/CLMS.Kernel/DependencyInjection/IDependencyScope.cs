@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CLMS.Users.CrossCuttingConcerns
+namespace CLMS.Kernel
 {
     public interface IDependencyScope
     {

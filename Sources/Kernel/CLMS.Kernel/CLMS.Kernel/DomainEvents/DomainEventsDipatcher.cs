@@ -2,7 +2,7 @@
 using EnsureThat;
 using Newtonsoft.Json;
 
-namespace CLMS.Users.CrossCuttingConcerns
+namespace CLMS.Kernel
 {
     public class DomainEventsDipatcher : IDomainEventsDispatcher
     {

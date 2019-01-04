@@ -1,4 +1,4 @@
-﻿using CLMS.Users.CrossCuttingConcerns;
+﻿using CLMS.Kernel;
 
 namespace CLMS.Users.Business
 {

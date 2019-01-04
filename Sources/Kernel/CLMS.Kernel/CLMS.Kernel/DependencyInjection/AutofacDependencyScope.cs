@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autofac;
-using CLMS.Users.CrossCuttingConcerns;
 using EnsureThat;
 
-namespace CLMS.Users.DependencyInjection
+namespace CLMS.Kernel
 {
     public class AutofacDependencyScope : IDependencyScope
     {

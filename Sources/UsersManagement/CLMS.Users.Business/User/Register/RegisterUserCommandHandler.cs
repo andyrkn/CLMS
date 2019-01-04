@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using CLMS.Users.CrossCuttingConcerns;
+using CLMS.Kernel;
 using CLMS.Users.Domain;
 using CSharpFunctionalExtensions;
 using EnsureThat;

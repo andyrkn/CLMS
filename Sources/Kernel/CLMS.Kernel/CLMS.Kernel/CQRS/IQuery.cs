@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace CLMS.Users.CrossCuttingConcerns
+namespace CLMS.Kernel
 {
     public interface IQuery<out TResult> : IRequest<TResult>
     {

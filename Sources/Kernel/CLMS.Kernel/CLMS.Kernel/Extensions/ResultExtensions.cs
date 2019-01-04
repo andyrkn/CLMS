@@ -2,7 +2,7 @@
 using CSharpFunctionalExtensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CLMS.Users
+namespace CLMS.Kernel
 {
     public static class ResultExtensions
     {

@@ -1,6 +1,7 @@
 ﻿using Autofac;
+using CLMS.Kernel;
 using CLMS.Users.Business;
-using CLMS.Users.CrossCuttingConcerns;
+using Module = Autofac.Module;
 
 namespace CLMS.Users.DependencyInjection
 {
@@ -8,15 +9,7 @@ namespace CLMS.Users.DependencyInjection
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(typeof(BusinessLayer).Assembly)
-                .Where(candidate => candidate.IsClosedTypeOf(typeof(IDomainEventHandler<>)))
-                .AsSelf()
-                .AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterType<AutofacDependencyScope>()
-                .As<IDependencyScope>()
-                .InstancePerLifetimeScope();
+            builder.RegisterDomainEvents(typeof(BusinessLayer).Assembly);
         }
     }
 }

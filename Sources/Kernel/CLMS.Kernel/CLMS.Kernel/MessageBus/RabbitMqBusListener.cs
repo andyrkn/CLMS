@@ -6,9 +6,9 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace CLMS.Users.CrossCuttingConcerns
+namespace CLMS.Kernel
 {
-    public class RabbitMqBusListener : IMessageBusListener
+    internal class RabbitMqBusListener : IMessageBusListener
     {
         private const string HostName = "localhost";
         private const string ExchangeType = "fanout";
@@ -42,18 +42,21 @@ namespace CLMS.Users.CrossCuttingConcerns
             channel.QueueBind(queueName, topic, string.Empty);
 
             var consumer = new EventingBasicConsumer(channel);
-            consumer.Received += (model, ea) =>
+            consumer.Received += ConsumerOnReceived(eventType, eventHandlerType);
+            channel.BasicConsume(queueName, true, consumer);
+        }
+
+        private EventHandler<BasicDeliverEventArgs> ConsumerOnReceived(Type eventType, Type eventHandlerType)
+        {
+            return (model, eventArgs) =>
             {
-                var body = ea.Body;
-                var message = Encoding.UTF8.GetString(body);
+                var message = Encoding.UTF8.GetString(eventArgs.Body);
                 var deserialized = JsonConvert.DeserializeObject(message, eventType);
                 var handler = dependencyScope.Resolve(eventHandlerType);
                 Task.Run(() =>
                     handler.GetType().GetMethod(nameof(IDomainEventHandler<IDomainEvent>.Handle))
                         .Invoke(handler, new[] {deserialized}));
             };
-
-            channel.BasicConsume(queueName, true, consumer);
         }
 
         private static string TopicNameFromEventName(string eventName) =>

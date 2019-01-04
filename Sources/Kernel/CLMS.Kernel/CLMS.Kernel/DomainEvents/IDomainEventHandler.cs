@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace CLMS.Users.CrossCuttingConcerns
+namespace CLMS.Kernel
 {
     public interface IDomainEventHandler<in TEvent>
         where TEvent : class, IDomainEvent

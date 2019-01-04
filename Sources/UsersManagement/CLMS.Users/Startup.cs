@@ -1,6 +1,5 @@
-﻿using System;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
+﻿using Autofac;
+using CLMS.Kernel;
 using CLMS.Users.Business;
 using CLMS.Users.DependencyInjection;
 using MediatR;
@@ -27,7 +26,6 @@ namespace CLMS.Users
         {
             services.AddIdentityConfig(Configuration);
             services.AddMediatR(typeof(BusinessLayer).Assembly);
-            services.AddUsersAuthentication(Configuration);
             services.AddCors(config =>
             {
                 config.AddPolicy(UsersPolicy, policy =>
@@ -38,7 +36,9 @@ namespace CLMS.Users
                 });
             });
             services.AddTransient<JwtProvider>();
-            services.AddDomainEventsDispatcher();
+
+            services.AddUsersAuthentication(Configuration);
+            services.AddMessageBusForDomainEvents();
 
             services.AddSingleton(_ => Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -64,7 +64,7 @@ namespace CLMS.Users
                 app.UseHsts();
             }
 
-            app.UseEventsHandlerForMessageBusEvents();
+            app.UseMessageBusForDomainEvents(typeof(BusinessLayer).Assembly);
             app.UseMiddleware<JwtMiddleware>();
             app.UseCors(UsersPolicy);
             app.UseHttpsRedirection();
