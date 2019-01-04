@@ -1,13 +1,9 @@
-﻿using CLMS.Courses.CrossCuttingConcerns;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using CLMS.Kernel;
 
 namespace CLMS.Courses.Business
 {
     public class GetAllCoursesQuery : IQuery<IEnumerable<CourseModel>>
     {
-        public GetAllCoursesQuery()
-        {
-
-        }
     }
 }

@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using CLMS.Kernel;
 
 namespace CLMS.Courses.Controllers
 {
@@ -21,8 +22,8 @@ namespace CLMS.Courses.Controllers
         [HttpPost]
         public IActionResult Add([FromBody] CourseModel model)
         {
-            var result = DispatchCommand<AddNewCourseCommand, CourseModel>(new AddNewCourseCommand(model));
-            return Ok();
+            var result = DispatchCommand(new AddNewCourseCommand(model));
+            return result.AsActionResult(Ok);
         }
     }
 }

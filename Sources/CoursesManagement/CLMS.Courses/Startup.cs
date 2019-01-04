@@ -10,6 +10,7 @@ using AutoMapper;
 using CLMS.Courses.Persistance.Repositories;
 using CLMS.Courses.Domain;
 using CLMS.Courses.Persistance;
+using CLMS.Kernel;
 using Microsoft.EntityFrameworkCore;
 
 namespace CLMS.Courses
@@ -32,6 +33,7 @@ namespace CLMS.Courses
             services.AddMediatR(typeof(BusinessLayer).Assembly);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<ICoursesRepository, CoursesRepository>();
+            services.AddUsersAuthentication(Configuration);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My API", Version = "v1" });

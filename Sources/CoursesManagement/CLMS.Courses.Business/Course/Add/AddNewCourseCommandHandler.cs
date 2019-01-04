@@ -6,29 +6,26 @@ using MediatR;
 
 namespace CLMS.Courses.Business
 {
-    public class AddNewCourseCommandHandler : RequestHandler<AddNewCourseCommand,CourseModel>
+    public class AddNewCourseCommandHandler : RequestHandler<AddNewCourseCommand, Result>
     {
         private readonly ICoursesRepository coursesRepository;
-        private readonly IMapper mapper;
 
-        public AddNewCourseCommandHandler(ICoursesRepository coursesRepository,IMapper mapper)
+        public AddNewCourseCommandHandler(ICoursesRepository coursesRepository)
         {
             EnsureArg.IsNotNull(coursesRepository);
-            EnsureArg.IsNotNull(mapper);
             this.coursesRepository = coursesRepository;
-            this.mapper = mapper;
         }
 
-        protected override CourseModel Handle(AddNewCourseCommand request)
+        protected override Result Handle(AddNewCourseCommand request)
         {
             EnsureArg.IsNotNull(request);
 
-            var course = Course.Create(request.courseModel.Name, request.courseModel.Holder);
+            var course = Course.Create(request.CourseModel.Name, request.CourseModel.Holder);
 
             coursesRepository.Add(course);
             coursesRepository.Save();
 
-            return mapper.Map<CourseModel>(course);
+            return Result.Ok();
         }
     }
 }

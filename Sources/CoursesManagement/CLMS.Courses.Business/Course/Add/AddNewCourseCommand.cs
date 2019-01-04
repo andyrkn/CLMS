@@ -1,13 +1,14 @@
-﻿using CLMS.Courses.CrossCuttingConcerns;
+﻿using CLMS.Kernel;
 
 namespace CLMS.Courses.Business
 {
-    public class AddNewCourseCommand : ICommand<CourseModel>
+    public class AddNewCourseCommand : ICommand
     {
-        public CourseModel courseModel;
+        public CourseModel CourseModel { get; }
+
         public AddNewCourseCommand(CourseModel courseModel)
         {
-            this.courseModel = courseModel;
+            CourseModel = courseModel;
         }
     }
 }
