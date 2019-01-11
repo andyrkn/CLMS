@@ -23,6 +23,7 @@
     <ProjectReference Include="..\CLMS.CourseContentManagement.Business\CLMS.CourseContentManagement.Business.csproj" />
     <ProjectReference Include="..\CLMS.CourseContentManagement.Domain\CLMS.CourseContentManagement.Domain.csproj" />
     <ProjectReference Include="..\CLMS.CourseContentManagement.Persistance\CLMS.CourseContentManagement.Persistance.csproj" />
+    <ProjectReference Include="..\CLMS.CoursesContentManagement.Business\CLMS.CoursesContentManagement.Business.csproj" />
   </ItemGroup>
 
 </Project>

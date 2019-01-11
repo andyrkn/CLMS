@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLMS.CoursesContentManagement", "CLMS.CoursesContentManagement\CLMS.CoursesContentManagement.csproj", "{8AC72225-AE23-4CE2-8277-1B3F3FDFFE5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLMS.CoursesContentManagement", "CLMS.CoursesContentManagement\CLMS.CoursesContentManagement.csproj", "{8AC72225-AE23-4CE2-8277-1B3F3FDFFE5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLMS.CoursesContentManagement.Domain", "CLMS.CoursesContentManagement.Domain\CLMS.CoursesContentManagement.Domain.csproj", "{71FA3410-9099-467B-A13C-A98FF6E08282}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLMS.CoursesContentManagement.Domain", "CLMS.CoursesContentManagement.Domain\CLMS.CoursesContentManagement.Domain.csproj", "{71FA3410-9099-467B-A13C-A98FF6E08282}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLMS.CoursesContentManagement.Persistance", "CLMS.CoursesContentManagement.Persistance\CLMS.CoursesContentManagement.Persistance.csproj", "{D53AF59B-F6E9-4ABA-A822-451A2D56F43F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLMS.CoursesContentManagement.Persistance", "CLMS.CoursesContentManagement.Persistance\CLMS.CoursesContentManagement.Persistance.csproj", "{D53AF59B-F6E9-4ABA-A822-451A2D56F43F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLMS.CoursesContentManagement.Business", "CLMS.CoursesContentManagement.Business\CLMS.CoursesContentManagement.Business.csproj", "{3D7A317F-5E55-4A64-8AEA-1FC3C9BF6AF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLMS.CoursesContentManagement.Business", "CLMS.CoursesContentManagement.Business\CLMS.CoursesContentManagement.Business.csproj", "{3D7A317F-5E55-4A64-8AEA-1FC3C9BF6AF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Presentation", "01-Presentation", "{D3D1B6AD-4135-46D4-BE18-DA9CCBADF89A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Infrastructure", "02-Infrastructure", "{CEC7457C-FDE3-43F9-B84A-65BB1749C8CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Core", "03-Core", "{0322ACEF-E589-48CB-88BB-C7A440C712E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8AC72225-AE23-4CE2-8277-1B3F3FDFFE5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -72,5 +75,17 @@ Global
 		{3D7A317F-5E55-4A64-8AEA-1FC3C9BF6AF7}.Release|x64.Build.0 = Release|Any CPU
 		{3D7A317F-5E55-4A64-8AEA-1FC3C9BF6AF7}.Release|x86.ActiveCfg = Release|Any CPU
 		{3D7A317F-5E55-4A64-8AEA-1FC3C9BF6AF7}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8AC72225-AE23-4CE2-8277-1B3F3FDFFE5C} = {D3D1B6AD-4135-46D4-BE18-DA9CCBADF89A}
+		{71FA3410-9099-467B-A13C-A98FF6E08282} = {0322ACEF-E589-48CB-88BB-C7A440C712E4}
+		{D53AF59B-F6E9-4ABA-A822-451A2D56F43F} = {CEC7457C-FDE3-43F9-B84A-65BB1749C8CC}
+		{3D7A317F-5E55-4A64-8AEA-1FC3C9BF6AF7} = {0322ACEF-E589-48CB-88BB-C7A440C712E4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7543D9F6-A123-40C7-95E5-C51C6134FE6A}
 	EndGlobalSection
 EndGlobal
