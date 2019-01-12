@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CSharpFunctionalExtensions;
+using MediatR;
 
 namespace CLMS.QuestionsManagement.Business.Question.Update
 {
-    class UpdateQuestionCommandHandler
+    public class UpdateQuestionCommandHandler : RequestHandler<UpdateQuestionCommand, Result>
     {
+        protected override Result Handle(UpdateQuestionCommand request)
+        {
+            return Result.Ok();
+        }
     }
 }

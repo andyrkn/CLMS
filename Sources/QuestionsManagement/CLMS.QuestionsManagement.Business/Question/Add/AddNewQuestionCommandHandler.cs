@@ -1,13 +1,11 @@
-﻿using CSharpFunctionalExtensions;
+﻿using CLMS.QuestionsManagement.Domain;
+using CSharpFunctionalExtensions;
 using EnsureThat;
-using CLMS.QuestionsManagement.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using MediatR;
 
 namespace CLMS.QuestionsManagement.Business.Question.Add
 {
-    class AddNewQuestionCommandHandler : RequestHandler <AddNewQuestionCommand, Result>
+    internal class AddNewQuestionCommandHandler : RequestHandler<AddNewQuestionCommand, Result>
     {
         private readonly IQuestionsRepository questionsRepository;
 
@@ -21,13 +19,11 @@ namespace CLMS.QuestionsManagement.Business.Question.Add
         {
             EnsureArg.IsNotNull(request);
 
-            var question = Question.Create(request.QuestionModel.Name);
-            
+            var question = Domain.Question.Create(request.QuestionModel.Name);
             questionsRepository.Add(question);
             questionsRepository.Save();
 
             return Result.Ok();
         }
-
     }
 }

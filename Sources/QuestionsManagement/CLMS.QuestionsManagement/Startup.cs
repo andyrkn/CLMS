@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CLMS.Kernel;
+using CLMS.QuestionsManagement.Business;
+using CLMS.QuestionsManagement.Persistance;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -15,6 +20,7 @@ namespace CLMS.Questions
 {
     public class Startup
     {
+        private const string Policy = "Policy";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,6 +32,24 @@ namespace CLMS.Questions
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddDbContext<QuestionsContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("Questions")));
+            services.AddUsersAuthentication(Configuration);
+            services.AddMediatR(typeof(BusinessLayer));
+            services.AddCors(config =>
+            {
+                config.AddPolicy(Policy, policy =>
+                {
+                    policy.AllowAnyHeader();
+                    policy.AllowAnyMethod();
+                    policy.AllowAnyOrigin();
+                });
+            });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

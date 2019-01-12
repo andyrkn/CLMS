@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CLMS.Kernel;
 
 namespace CLMS.QuestionsManagement.Business.Question.Update
 {
-    class UpdateQuestionCommand
+    public class UpdateQuestionCommand : ICommand
     {
     }
 }

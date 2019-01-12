@@ -1,4 +1,6 @@
-﻿namespace CLMS.CoursesContentManagement.Business
+﻿using CLMS.Kernel;
+
+namespace CLMS.CoursesContentManagement.Business
 {
     public class AddNewCourseContentCommand : ICommand
     {

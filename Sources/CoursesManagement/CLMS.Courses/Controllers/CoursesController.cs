@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using CLMS.Kernel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CLMS.Courses.Controllers
 {
@@ -20,9 +21,10 @@ namespace CLMS.Courses.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add([FromBody] CourseModel model)
+        [Authorize(Roles = "Admin")]
+        public IActionResult CreateCourse([FromBody] AddCourseModel model)
         {
-            var result = DispatchCommand(new AddNewCourseCommand(model));
+            var result = DispatchCommand(new CreateCourseCommand(model));
             return result.AsActionResult(Ok);
         }
     }

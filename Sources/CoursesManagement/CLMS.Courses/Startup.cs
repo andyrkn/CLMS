@@ -33,7 +33,10 @@ namespace CLMS.Courses
             services.AddMediatR(typeof(BusinessLayer).Assembly);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<ICoursesRepository, CoursesRepository>();
+            services.AddScoped<ICourseHolderRespository, CourseHolderRespository>();
             services.AddUsersAuthentication(Configuration);
+
+            services.AddMessageBusForDomainEvents();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My API", Version = "v1" });
@@ -50,6 +53,8 @@ namespace CLMS.Courses
             {
                 app.UseHsts();
             }
+
+            app.UseMessageBusForDomainEvents(typeof(BusinessLayer).Assembly);
 
             app.UseCors(CoursesPolicy);
             app.UseSwagger();

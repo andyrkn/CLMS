@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using CLMS.CoursesContentManagement.Business;
+using CLMS.Kernel;
 using MediatR;
-using CLMS.CoursesContentManagement.Business;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CLMS.CoursesContentManagement.Controllers
 {
@@ -12,7 +9,9 @@ namespace CLMS.CoursesContentManagement.Controllers
     [ApiController]
     public class CoursesContentController : BaseApiController
     {
-        public CoursesContentController(IMediator mediator) : base(mediator) { }
+        public CoursesContentController(IMediator mediator) : base(mediator)
+        {
+        }
 
         [HttpPost]
         public IActionResult Add([FromBody] CourseContentModel model)

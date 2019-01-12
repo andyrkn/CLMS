@@ -2,10 +2,10 @@
 using System.Linq;
 using CSharpFunctionalExtensions;
 
-namespace CLMS.Courses.Domain
+namespace CLMS.Kernel.Domain
 {
     public interface IReadRepository<T>
-        where T : Course
+        where T : Entity
     {
         Maybe<T> GetById(Guid id);
 

@@ -1,7 +1,7 @@
-﻿namespace CLMS.Courses.Domain
+﻿namespace CLMS.Kernel.Domain
 {
     public interface IWriteRepository<in T>
-        where T: Course
+        where T : Entity
     {
         void Add(T entity);
 
@@ -9,6 +9,6 @@
 
         void Delete(T entity);
 
-        void Save();
+        void SaveChanges();
     }
 }

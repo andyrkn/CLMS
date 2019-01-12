@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,13 +16,13 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="CLMS.Kernel" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CLMS.CourseContentManagement.Business\CLMS.CourseContentManagement.Business.csproj" />
-    <ProjectReference Include="..\CLMS.CourseContentManagement.Domain\CLMS.CourseContentManagement.Domain.csproj" />
-    <ProjectReference Include="..\CLMS.CourseContentManagement.Persistance\CLMS.CourseContentManagement.Persistance.csproj" />
     <ProjectReference Include="..\CLMS.CoursesContentManagement.Business\CLMS.CoursesContentManagement.Business.csproj" />
+    <ProjectReference Include="..\CLMS.CoursesContentManagement.Domain\CLMS.CoursesContentManagement.Domain.csproj" />
+    <ProjectReference Include="..\CLMS.CoursesContentManagement.Persistance\CLMS.CoursesContentManagement.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

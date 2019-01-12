@@ -1,7 +1,5 @@
 ﻿using CLMS.QuestionsManagement.Business.Question.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using CLMS.Kernel;
 
 namespace CLMS.QuestionsManagement.Business.Question.Add
 {
