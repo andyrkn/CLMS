@@ -1,16 +1,15 @@
 ﻿using System;
 using CLMS.Kernel;
+using CSharpFunctionalExtensions;
 
 namespace CLMS.CoursesContentManagement.Business
 {
-    public class AddContentCommand : ICommand
+    public class GetContentHolderQuery : IQuery<Result<ContentHolderDetailsModel>>
     {
-        public AddContentModel Model { get; }
         public Guid ContentHolderId { get; }
 
-        public AddContentCommand(AddContentModel addModel, Guid contentHolderId)
+        public GetContentHolderQuery(Guid contentHolderId)
         {
-            Model = addModel;
             ContentHolderId = contentHolderId;
         }
     }

@@ -110,7 +110,7 @@ namespace CLMS.Users
                     ClaimValueTypes.Integer64),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim("id", user.Id.ToString()),
-                new Claim("role", user.Role.ToString("G"))
+                new Claim(ClaimTypes.Role, user.Role.ToString("G"))
             };
         }
     }

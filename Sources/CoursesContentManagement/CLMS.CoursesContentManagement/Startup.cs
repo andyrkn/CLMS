@@ -1,4 +1,7 @@
-﻿using CLMS.CoursesContentManagement.Business;
+﻿using Autofac;
+using AutoMapper;
+using CLMS.CoursesContentManagement.Business;
+using CLMS.CoursesContentManagement.DependencyInjection;
 using CLMS.CoursesContentManagement.Domain;
 using CLMS.CoursesContentManagement.Persistance;
 using CLMS.Kernel;
@@ -23,7 +26,6 @@ namespace CLMS.CoursesContentManagement
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -42,16 +44,22 @@ namespace CLMS.CoursesContentManagement
                     policy.AllowAnyOrigin();
                 });
             });
+
+            services.AddAutoMapper(typeof(BusinessLayer).Assembly);
             services.AddScoped<IContentHolderRepository, ContentHolderRepository>();
             services.AddScoped<IFileRepository, FileRepository>();
-
+            services.AddMessageBusForDomainEvents();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My API", Version = "v1" });
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule<AutofacIocContainer>();
+        }
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors(Policy);
@@ -62,10 +70,10 @@ namespace CLMS.CoursesContentManagement
             }
             else
             {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
+            app.UseMessageBusForDomainEvents(typeof(BusinessLayer).Assembly);
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {

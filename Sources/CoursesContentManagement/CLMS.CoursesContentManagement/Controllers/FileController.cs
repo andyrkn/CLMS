@@ -5,6 +5,7 @@ using CLMS.CoursesContentManagement.Business.File.Create;
 using CLMS.Kernel;
 using CSharpFunctionalExtensions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,8 @@ namespace CLMS.CoursesContentManagement.Controllers
         {
         }
 
-        [HttpGet("{name}")]
+        [HttpGet("{name}", Name = nameof(GetFile))]
+        [Authorize]
         public IActionResult GetFile(string name)
         {
             var result = DispatchQuery<GetFileQuery, Result<FileModel>>(new GetFileQuery(name));
@@ -31,6 +33,7 @@ namespace CLMS.CoursesContentManagement.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
         public IActionResult CreateFile([FromForm] IFormFile file)
         {
             byte[] fileConntentAsBytes;
@@ -50,7 +53,8 @@ namespace CLMS.CoursesContentManagement.Controllers
 
             var result = DispatchCommand<CreateFileCommand, string>(new CreateFileCommand(file.FileName,
                 file.FileName.Split('.').Last(), fileConntentAsBytes));
-            return result.AsActionResult(filename => Created($"api/file/{filename}", new {fileName = filename}));
+            return result.AsActionResult(filename =>
+                CreatedAtRoute(nameof(GetFile), new {fileName = filename}, new {name = filename}));
         }
     }
 }

@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CLMS.CoursesContentManagement.Business\CLMS.CoursesContentManagement.Business.csproj" />
+    <ProjectReference Include="..\CLMS.CoursesContentManagement.DependencyInjection\CLMS.CoursesContentManagement.DependencyInjection.csproj" />
     <ProjectReference Include="..\CLMS.CoursesContentManagement.Domain\CLMS.CoursesContentManagement.Domain.csproj" />
     <ProjectReference Include="..\CLMS.CoursesContentManagement.Persistance\CLMS.CoursesContentManagement.Persistance.csproj" />
   </ItemGroup>

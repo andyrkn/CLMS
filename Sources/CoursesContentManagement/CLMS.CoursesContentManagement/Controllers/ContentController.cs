@@ -1,6 +1,7 @@
 ﻿using CLMS.CoursesContentManagement.Business;
 using CLMS.Kernel;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CLMS.CoursesContentManagement.Controllers
@@ -11,13 +12,6 @@ namespace CLMS.CoursesContentManagement.Controllers
     {
         public ContentController(IMediator mediator) : base(mediator)
         {
-        }
-
-        [HttpPost]
-        public IActionResult Add([FromBody] AddContentModel model)
-        {
-            var result = DispatchCommand(new AddContentCommand(model));
-            return result.AsActionResult(() => Created("api/content", model));
         }
     }
 }

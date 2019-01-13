@@ -21,7 +21,6 @@ namespace CLMS.Courses.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public IActionResult CreateCourse([FromBody] AddCourseModel model)
         {
             var result = DispatchCommand(new CreateCourseCommand(model));
