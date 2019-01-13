@@ -2,7 +2,7 @@
 
 namespace CLMS.CoursesContentManagement.Business.File.Create
 {
-    public class CreateFileCommand : ICommand
+    public class CreateFileCommand : ICommand<string>
     {
         public CreateFileCommand(string name, string extensions, byte[] content)
         {

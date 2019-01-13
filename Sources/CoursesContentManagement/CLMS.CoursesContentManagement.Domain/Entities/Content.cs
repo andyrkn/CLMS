@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CLMS.Kernel.Domain;
+using CSharpFunctionalExtensions;
 
 namespace CLMS.CoursesContentManagement.Domain
 {
@@ -18,6 +19,12 @@ namespace CLMS.CoursesContentManagement.Domain
         {
             get => files.ToList();
             private set => files = value.ToList();
+        }
+
+        public Result Delete()
+        {
+            IsDeleted = true;
+            return Result.Ok();
         }
 
         public bool IsDeleted { get; private set; }

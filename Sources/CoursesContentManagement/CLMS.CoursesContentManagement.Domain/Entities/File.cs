@@ -1,4 +1,5 @@
-﻿using CLMS.Kernel.Domain;
+﻿using System;
+using CLMS.Kernel.Domain;
 
 namespace CLMS.CoursesContentManagement.Domain
 {
@@ -14,13 +15,16 @@ namespace CLMS.CoursesContentManagement.Domain
 
         public FileContent Content { get; private set; }
 
+        public Guid FileContentId { get; private set; }
+
         public static File Create(string name, string extenstion, FileContent content)
         {
             return new File
             {
                 Name = name,
                 Extension = extenstion,
-                Content = content
+                Content = content,
+                FileContentId = content.Id
             };
         }
     }

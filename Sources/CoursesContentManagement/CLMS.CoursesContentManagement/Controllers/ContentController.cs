@@ -17,7 +17,7 @@ namespace CLMS.CoursesContentManagement.Controllers
         public IActionResult Add([FromBody] AddContentModel model)
         {
             var result = DispatchCommand(new AddContentCommand(model));
-            return result.AsActionResult(Ok);
+            return result.AsActionResult(() => Created("api/content", model));
         }
     }
 }

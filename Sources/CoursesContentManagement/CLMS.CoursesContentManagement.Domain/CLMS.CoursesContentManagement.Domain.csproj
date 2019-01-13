@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CLMS.Kernel" Version="1.0.3" />
+    <PackageReference Include="CLMS.Kernel" Version="1.0.5" />
     <PackageReference Include="CSharpFunctionalExtensions" Version="1.14.0" />
   </ItemGroup>
 

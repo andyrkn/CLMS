@@ -21,6 +21,12 @@ namespace CLMS.Kernel
             return mediator.Send(command).Result;
         }
 
+        protected Result<TResult> DispatchCommand<TCommand, TResult>(TCommand command)
+            where TCommand : ICommand<TResult>
+        {
+            return mediator.Send(command).Result;
+        }
+
         protected TData DispatchQuery<TQuery, TData>(TQuery query)
             where TQuery : IQuery<TData>
         {

@@ -1,4 +1,5 @@
 ﻿using CLMS.CoursesContentManagement.Domain;
+using CLMS.CoursesContentManagement.Persistance.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace CLMS.CoursesContentManagement.Persistance
@@ -10,11 +11,11 @@ namespace CLMS.CoursesContentManagement.Persistance
             Database.Migrate();
         }
 
-        public DbSet<Content> CoursesContent { get; set; }
+        public DbSet<ContentHolder> ContentHolders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            new FileContentConfiguration().Configure(modelBuilder.Entity<FileContent>());
         }
     }
 }

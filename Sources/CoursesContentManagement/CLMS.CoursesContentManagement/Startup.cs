@@ -29,8 +29,9 @@ namespace CLMS.CoursesContentManagement
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<ContentContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("Files")));
+                    Configuration.GetConnectionString("Content")));
             services.AddUsersAuthentication(Configuration);
+
             services.AddMediatR(typeof(BusinessLayer));
             services.AddCors(config =>
             {
@@ -41,7 +42,8 @@ namespace CLMS.CoursesContentManagement
                     policy.AllowAnyOrigin();
                 });
             });
-            services.AddScoped<IContentRepository, ContentRepository>();
+            services.AddScoped<IContentHolderRepository, ContentHolderRepository>();
+            services.AddScoped<IFileRepository, FileRepository>();
 
             services.AddSwaggerGen(c =>
             {

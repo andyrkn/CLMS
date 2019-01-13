@@ -14,5 +14,9 @@
     <ProjectReference Include="..\CLMS.CoursesContentManagement.Domain\CLMS.CoursesContentManagement.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 
 </Project>
