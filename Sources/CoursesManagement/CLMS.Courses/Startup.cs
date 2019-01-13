@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using CLMS.Courses.Business;
 using MediatR;
 using AutoMapper;
+using CLMS.Courses.DependencyInjection;
 using CLMS.Courses.Persistance.Repositories;
 using CLMS.Courses.Domain;
 using CLMS.Courses.Persistance;
@@ -35,14 +36,18 @@ namespace CLMS.Courses
             services.AddScoped<ICoursesRepository, CoursesRepository>();
             services.AddScoped<ICourseHolderRespository, CourseHolderRespository>();
             services.AddUsersAuthentication(Configuration);
-
             services.AddMessageBusForDomainEvents();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My API", Version = "v1" });
             });
         }
-     
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule<AutofacIocContainer>();
+        }
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CLMS.CoursesContentManagement.Persistance
 {
-    public class CoursesContentContext : DbContext
+    public class ContentContext : DbContext
     {
-        public CoursesContentContext(DbContextOptions<CoursesContentContext> options) : base(options)
+        public ContentContext(DbContextOptions<ContentContext> options) : base(options)
         {
             Database.Migrate();
         }
 
-        public DbSet<CourseContent> CoursesContent { get; set; }
+        public DbSet<Content> CoursesContent { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

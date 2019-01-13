@@ -1,4 +1,5 @@
 ﻿using CLMS.Courses.Domain;
+using CLMS.Courses.Persistance.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
 
 namespace CLMS.Courses.Persistance
@@ -13,12 +14,8 @@ namespace CLMS.Courses.Persistance
         public DbSet<Course> Courses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {/*
-            var entityBuilder = modelBuilder.Entity<Course>();
-            entityBuilder.OwnsOne(x => x.Name, fn => fn.Property(x => x).IsRequired());
-            entityBuilder.OwnsOne(x => x.Holder, fn => fn.Property(x => x).IsRequired());
-            */
+        {
+            new CourseConfiguration().Configure(modelBuilder.Entity<Course>());
         }
-
     }
 }

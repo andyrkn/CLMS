@@ -7,16 +7,16 @@ namespace CLMS.CoursesContentManagement.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CoursesContentController : BaseApiController
+    public class ContentController : BaseApiController
     {
-        public CoursesContentController(IMediator mediator) : base(mediator)
+        public ContentController(IMediator mediator) : base(mediator)
         {
         }
 
         [HttpPost]
-        public IActionResult Add([FromBody] CourseContentModel model)
+        public IActionResult Add([FromBody] AddContentModel model)
         {
-            var result = DispatchCommand(new AddNewCourseContentCommand(model));
+            var result = DispatchCommand(new AddContentCommand(model));
             return result.AsActionResult(Ok);
         }
     }

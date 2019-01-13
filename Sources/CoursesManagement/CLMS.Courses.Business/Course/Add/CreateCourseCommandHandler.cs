@@ -1,4 +1,5 @@
 ﻿using CLMS.Courses.Domain;
+using CLMS.Kernel;
 using CSharpFunctionalExtensions;
 using EnsureThat;
 using MediatR;
@@ -9,12 +10,14 @@ namespace CLMS.Courses.Business
     {
         private readonly ICoursesRepository coursesRepository;
         private readonly ICourseHolderRespository courseHolderRespository;
+        private readonly IDomainEventsDispatcher eventsDispatcher;
 
-        public CreateCourseCommandHandler(ICoursesRepository coursesRepository, ICourseHolderRespository courseHolderRespository)
+        public CreateCourseCommandHandler(ICoursesRepository coursesRepository, ICourseHolderRespository courseHolderRespository, IDomainEventsDispatcher eventsDispatcher)
         {
             EnsureArg.IsNotNull(coursesRepository);
             this.coursesRepository = coursesRepository;
             this.courseHolderRespository = courseHolderRespository;
+            this.eventsDispatcher = eventsDispatcher;
         }
 
         protected override Result Handle(CreateCourseCommand request)
@@ -32,6 +35,7 @@ namespace CLMS.Courses.Business
             var course = Domain.Course.Create(name, holder);
             coursesRepository.Add(course);
             coursesRepository.SaveChanges();
+            eventsDispatcher.Raise(new CourseCreatedEvent {Name = name, HolderEmail = holder.Email});
 
             return Result.Ok();
         }
