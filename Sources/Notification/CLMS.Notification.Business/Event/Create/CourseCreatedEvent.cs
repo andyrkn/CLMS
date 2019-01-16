@@ -1,7 +1,7 @@
 ﻿using System;
 using CLMS.Kernel;
 
-namespace CLMS.CoursesContentManagement.Business
+namespace CLMS.Notification.Business
 {
     public class CourseCreatedEvent : IDomainEvent
     {
@@ -9,6 +9,5 @@ namespace CLMS.CoursesContentManagement.Business
 
         public string Name { get; set; }
 
-        public string HolderEmail { get; set; }
     }
 }

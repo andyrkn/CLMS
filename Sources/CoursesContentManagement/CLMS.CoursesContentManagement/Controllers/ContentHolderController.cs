@@ -36,10 +36,8 @@ namespace CLMS.CoursesContentManagement.Controllers
             return result.AsActionResult(Ok);
         }
 
-
-
         [HttpPost("{id:guid}/content")]
-        //[Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Teacher")]
         public IActionResult Add([FromRoute] Guid id, [FromBody] AddContentModel model)
         {
             var result = DispatchCommand(new AddContentCommand(model, id));

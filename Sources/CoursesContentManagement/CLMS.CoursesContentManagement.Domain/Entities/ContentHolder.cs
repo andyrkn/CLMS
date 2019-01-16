@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CLMS.Kernel.Domain;
 using CSharpFunctionalExtensions;
@@ -10,6 +11,8 @@ namespace CLMS.CoursesContentManagement.Domain
         private ContentHolder()
         {
         }
+
+        public Guid OriginId { get; private set; }
 
         public string Name { get; private set; }
 
@@ -23,12 +26,13 @@ namespace CLMS.CoursesContentManagement.Domain
             private set => contents = value.ToList();
         }
 
-        public static ContentHolder Create(string name, string holderEmail)
+        public static ContentHolder Create(string name, string holderEmail, Guid originId)
         {
             return new ContentHolder
             {
                 Name = name,
-                HolderEmail = holderEmail
+                HolderEmail = holderEmail,
+                OriginId = originId
             };
         }
 

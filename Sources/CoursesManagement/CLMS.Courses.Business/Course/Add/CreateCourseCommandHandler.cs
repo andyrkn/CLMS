@@ -8,11 +8,12 @@ namespace CLMS.Courses.Business
 {
     public class CreateCourseCommandHandler : RequestHandler<CreateCourseCommand, Result>
     {
-        private readonly ICoursesRepository coursesRepository;
         private readonly ICourseHolderRespository courseHolderRespository;
+        private readonly ICoursesRepository coursesRepository;
         private readonly IDomainEventsDispatcher eventsDispatcher;
 
-        public CreateCourseCommandHandler(ICoursesRepository coursesRepository, ICourseHolderRespository courseHolderRespository, IDomainEventsDispatcher eventsDispatcher)
+        public CreateCourseCommandHandler(ICoursesRepository coursesRepository,
+            ICourseHolderRespository courseHolderRespository, IDomainEventsDispatcher eventsDispatcher)
         {
             EnsureArg.IsNotNull(coursesRepository);
             this.coursesRepository = coursesRepository;
@@ -27,7 +28,6 @@ namespace CLMS.Courses.Business
 
             return holder.ToResult("Course holder not found")
                 .OnSuccess(x => CreateCourse(request.CourseModel.Name, holder.Value));
-
         }
 
         private Result CreateCourse(string name, CourseHolder holder)
@@ -35,7 +35,8 @@ namespace CLMS.Courses.Business
             var course = Domain.Course.Create(name, holder);
             coursesRepository.Add(course);
             coursesRepository.SaveChanges();
-            eventsDispatcher.Raise(new CourseCreatedEvent {Name = name, HolderEmail = holder.Email});
+
+            eventsDispatcher.Raise(new CourseCreatedEvent {Name = name, HolderEmail = holder.Email, Id = course.Id});
 
             return Result.Ok();
         }

@@ -18,7 +18,7 @@ namespace CLMS.CoursesContentManagement.Business.Events.ContentHolder
         public Task Handle(CourseCreatedEvent @event)
         {
             EnsureArg.IsNotNull(@event);
-            var contentHolder = Domain.ContentHolder.Create(@event.Name, @event.HolderEmail);
+            var contentHolder = Domain.ContentHolder.Create(@event.Name, @event.HolderEmail, @event.Id);
 
             contentHolderRepository.Add(contentHolder);
             contentHolderRepository.SaveChanges();

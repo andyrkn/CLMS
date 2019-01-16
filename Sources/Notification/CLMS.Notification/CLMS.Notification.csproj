@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
+    <PackageReference Include="CLMS.Kernel" Version="1.0.5" />
+    <PackageReference Include="MediatR" Version="6.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CLMS.Notification.Business\CLMS.Notification.Business.csproj" />
+    <ProjectReference Include="..\CLMS.Notification.DependencyInjection\CLMS.Notification.DependencyInjection.csproj" />
+    <ProjectReference Include="..\CLMS.Notification.Domain\CLMS.Notification.Domain.csproj" />
+    <ProjectReference Include="..\CLMS.Notification.Email\CLMS.Notification.Email.csproj" />
+    <ProjectReference Include="..\CLMS.Notification.Persistance\CLMS.Notification.Persistance.csproj" />
+  </ItemGroup>
+
+</Project>
