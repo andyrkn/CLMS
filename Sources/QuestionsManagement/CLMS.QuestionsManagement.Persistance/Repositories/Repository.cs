@@ -3,11 +3,13 @@ using System.Linq;
 using CSharpFunctionalExtensions;
 using CLMS.QuestionsManagement.Domain;
 using Microsoft.EntityFrameworkCore;
+using CLMS.Kernel;
+using CLMS.Kernel.Domain;
 
 namespace CLMS.QuestionsManagement.Persistance
 {
     public abstract class Repository<T> : IReadRepository<T>, IWriteRepository<T>
-        where T : Question
+        where T : Entity
     {
         private readonly QuestionsContext context;
         protected readonly DbSet<T> enititesSet;
@@ -43,7 +45,7 @@ namespace CLMS.QuestionsManagement.Persistance
             enititesSet.Remove(entity);
         }
 
-        public void Save()
+        public void SaveChanges()
         {
             context.SaveChanges();
         }

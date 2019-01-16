@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using CLMS.Kernel;
 using CLMS.QuestionsManagement.Business;
+using CLMS.QuestionsManagement.Domain;
 using CLMS.QuestionsManagement.Persistance;
+using CLMS.QuestionsManagement.Persistance.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,6 +39,7 @@ namespace CLMS.Questions
                     Configuration.GetConnectionString("Questions")));
             services.AddUsersAuthentication(Configuration);
             services.AddMediatR(typeof(BusinessLayer));
+            services.AddScoped<IQuestionsRepository, QuestionsRepository>();
             services.AddCors(config =>
             {
                 config.AddPolicy(Policy, policy =>

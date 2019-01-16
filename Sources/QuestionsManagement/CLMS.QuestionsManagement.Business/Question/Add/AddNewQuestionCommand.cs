@@ -3,7 +3,7 @@ using CLMS.Kernel;
 
 namespace CLMS.QuestionsManagement.Business.Question.Add
 {
-    class AddNewQuestionCommand : ICommand
+    public class AddNewQuestionCommand : ICommand
     {
         public QuestionModel QuestionModel { get; }
 
