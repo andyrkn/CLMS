@@ -16,7 +16,9 @@ import {
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DataService } from './services/data.service';
 import { QuestionsComponent } from './questions/questions.component';
-
+import { AdministrationComponent } from './administration/administration.component';
+import { QuestionsService } from './services/questions.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import { QuestionsComponent } from './questions/questions.component';
     HomeComponent,
     CoursesComponent,
     AboutComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    AdministrationComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +42,10 @@ import { QuestionsComponent } from './questions/questions.component';
     MatCardModule,
     MatExpansionModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
-  providers: [DataService],
+  providers: [DataService, QuestionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

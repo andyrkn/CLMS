@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionsService } from '../services/questions.service';
 
 @Component({
     selector: 'app-questions',
@@ -10,16 +11,10 @@ export class QuestionsComponent implements OnInit {
 
     public questions: any;
 
-    constructor() {
-        this.questions = [
-            'What Is x',
-            'What Is a',
-            'What Is b',
-            'What Is c',
-            'What Is d',
-            'What Is e',
-            'What Is f'
-        ];
+    constructor(private questionsSerivce: QuestionsService) {
+        this.questionsSerivce.GetAllQuestionsWithAnswers().subscribe((data) => {
+            this.questions = data;
+        });
     }
 
     public ngOnInit() {

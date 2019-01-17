@@ -1,3 +1,20 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>
+        Login
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="login-form">
+        <mat-form-field class="inputlength">
+          <input matInput [(ngModel)]="email" placeholder="Email" required>
+        </mat-form-field>
+        <mat-form-field class="inputlength">
+          <input matInput type="password" [(ngModel)]="password" placeholder="Password" required>
+        </mat-form-field>
+        <button mat-button (click)="login()">Login</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
