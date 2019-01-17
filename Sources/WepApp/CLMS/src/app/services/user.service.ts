@@ -20,10 +20,17 @@ export class UserService {
         localStorage.setItem(this._token, token);
     }
 
+    private saveEmail(email) {
+        localStorage.setItem('email', email);
+    }
+
     private removeToken() {
         localStorage.removeItem(this._token);
     }
 
+    public getToken() {
+        return localStorage.getItem(this._token);
+    }
     public get loginSubject() {
         return this._loginSubject.asObservable();
     }
@@ -49,6 +56,7 @@ export class UserService {
             .post(ServerConfig.endpoint + this._usersLogin, httpParams.toString(), { headers: headers })
             .subscribe((data) => {
                 this.saveToken(data);
+                this.saveEmail(email);
                 this._loginSubject.next(true);
                 this.router.navigate(['home']);
                 resolve(true);
