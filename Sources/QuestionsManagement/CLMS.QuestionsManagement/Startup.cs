@@ -35,9 +35,10 @@ namespace CLMS.Questions
             services.AddMediatR(typeof(BusinessLayer));
             services.AddAutoMapper(typeof(BusinessLayer));
             services.AddScoped<IQuestionsRepository, QuestionsRepository>();
+           
             services.AddCors(config =>
             {
-                config.AddPolicy(Policy, policy =>
+                config.AddPolicy(Policy, policy =>  
                 {
                     policy.AllowAnyHeader();
                     policy.AllowAnyMethod();
@@ -63,6 +64,7 @@ namespace CLMS.Questions
                 app.UseHsts();
             }
 
+            app.UseCors(Policy);
             app.UseHttpsRedirection();
             app.UseMvc();
         }
