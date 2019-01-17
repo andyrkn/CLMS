@@ -21,7 +21,7 @@ namespace CLMS.QuestionsManagement.Business.Question.Add
 
             var question = Domain.Question.Create(request.QuestionModel.Name);
             questionsRepository.Add(question);
-            questionsRepository.Save();
+            questionsRepository.SaveChanges();
 
             return Result.Ok();
         }

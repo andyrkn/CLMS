@@ -3,11 +3,11 @@ using CLMS.Kernel;
 
 namespace CLMS.QuestionsManagement.Business.Question.Add
 {
-    class AddNewQuestionCommand : ICommand
+    public class AddNewQuestionCommand : ICommand
     {
-        public QuestionModel QuestionModel { get; }
+        public AddQuestionModel QuestionModel { get; }
 
-        public AddNewQuestionCommand(QuestionModel questionModel)
+        public AddNewQuestionCommand(AddQuestionModel questionModel)
         {
             QuestionModel = questionModel;
         }
