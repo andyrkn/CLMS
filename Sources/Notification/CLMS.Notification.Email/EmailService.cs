@@ -26,8 +26,7 @@ namespace CLMS.Notification.Email
             var plainTextContent = Regex.Replace(message.Body, "<[^>]*>", "");
             var msg = MailHelper.CreateSingleEmail(from, to, message.Subject, plainTextContent, message.Body);
 
-            var response = await client.SendEmailAsync(msg);
-            var d = response;
+            await client.SendEmailAsync(msg);
         }
     }
 }
