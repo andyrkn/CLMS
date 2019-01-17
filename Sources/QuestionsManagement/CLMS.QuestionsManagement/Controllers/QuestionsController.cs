@@ -8,6 +8,7 @@ using CLMS.QuestionsManagement.Business.Question.GetAll;
 using CLMS.QuestionsManagement.Business.Question.Delete;
 using System;
 using CLMS.QuestionsManagement.Business.Answer.Add;
+using CSharpFunctionalExtensions;
 
 namespace CLMS.QuestionsManagement
 {
@@ -18,7 +19,7 @@ namespace CLMS.QuestionsManagement
         public QuestionsController(IMediator mediator) : base(mediator) { }
 
         [HttpPost]
-        public IActionResult CreateQuestion([FromBody] QuestionModel question)
+        public IActionResult CreateQuestion([FromBody] AddQuestionModel question)
         {
             var result = DispatchCommand(new AddNewQuestionCommand(question));
             return result.AsActionResult(Ok);
@@ -36,13 +37,11 @@ namespace CLMS.QuestionsManagement
             var result = DispatchCommand(new DeleteQuestionCommand(id));
             return result.AsActionResult(NoContent);
         }
-        [HttpPost("{id:guid}/answer")]
-        public IActionResult AddAnswer([FromRoute] Guid id, [FromBody] AnswerModel model)
+        [HttpGet("{id:guid}")]
+        public IActionResult GetQuestionById([FromRoute]Guid id)
         {
-            var result = DispatchCommand(new AddNewAnswerCommand(id, model));
-
-            return result.AsActionResult(() => Created("api/events", new { id }));
+            var result = DispatchQuery<GetByQuestionIdQuery, Result<QuestionModel>>(new GetByQuestionIdQuery(id));
+            return result.AsActionResult(Ok);
         }
-
     }
 }

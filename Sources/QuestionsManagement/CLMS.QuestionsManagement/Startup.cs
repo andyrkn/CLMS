@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using CLMS.Kernel;
 using CLMS.QuestionsManagement.Business;
 using CLMS.QuestionsManagement.Domain;
@@ -10,13 +7,10 @@ using CLMS.QuestionsManagement.Persistance.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace CLMS.Questions
 {
@@ -39,6 +33,7 @@ namespace CLMS.Questions
                     Configuration.GetConnectionString("Questions")));
             services.AddUsersAuthentication(Configuration);
             services.AddMediatR(typeof(BusinessLayer));
+            services.AddAutoMapper(typeof(BusinessLayer));
             services.AddScoped<IQuestionsRepository, QuestionsRepository>();
             services.AddCors(config =>
             {

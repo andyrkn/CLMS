@@ -1,8 +1,8 @@
 ﻿using System;
 using CLMS.Kernel.Domain;
 using System.Collections.Generic;
-using CLMS.QuestionsManagement.Domain.Entities;
 using System.Linq;
+using CSharpFunctionalExtensions;
 
 namespace CLMS.QuestionsManagement.Domain
 {
@@ -31,10 +31,19 @@ namespace CLMS.QuestionsManagement.Domain
             private set => answers = value.ToList();
         }
 
-        public void Answered(string answerText)
+        public void Answered(string answerText, string email)
         {
-            var newAnswer = Answer.Create(answerText);
+            var newAnswer = Answer.Create(answerText,email);
             answers.Add(newAnswer);
         }
+        
+        public Result ApproveAnswer(Guid answerId)
+        {
+            Maybe<Answer> answerOrNothing = answers.FirstOrDefault(x => x.Id == answerId);
+
+            return answerOrNothing.ToResult("Answer not found!")
+                .OnSuccess(answer => answer.Approve());
+        }
+
     }
 }
