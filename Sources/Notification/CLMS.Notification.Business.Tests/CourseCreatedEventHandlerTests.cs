@@ -26,16 +26,11 @@ namespace CLMS.Notification.Business.Tests
         public void Given_Handle_When_EventIsNotNull_Then_ShouldCreateEventAndSaveChanges()
         {
             // act
-            ExecuteEvent();
+            Handler().Handle(Event());
 
             // assert
             eventRepository.Verify(x  => x.Add(It.IsAny<Event>()));
             eventRepository.Verify(x => x.SaveChanges());
-        }
-
-        private void ExecuteEvent()
-        {
-            Handler().Handle(Event());
         }
 
         private CourseCreatedEventHandler Handler()

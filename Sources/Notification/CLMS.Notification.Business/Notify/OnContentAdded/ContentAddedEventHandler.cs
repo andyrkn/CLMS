@@ -11,8 +11,8 @@ namespace CLMS.Notification.Business
 {
     public class ContentAddedEventHandler : IDomainEventHandler<ContentAddedEvent>
     {
-        private readonly IEventRepository eventRepository;
         private readonly IEmailService emailService;
+        private readonly IEventRepository eventRepository;
 
         public ContentAddedEventHandler(IEventRepository eventRepository, IEmailService emailService)
         {
@@ -29,7 +29,7 @@ namespace CLMS.Notification.Business
             Maybe<Event> eventOrNothing = eventRepository.GetAll().FirstOrDefault(x => x.OriginId == @event.OriginId);
 
             eventOrNothing.ToResult("eventNotFound")
-                .OnSuccess( ev => SendEmail(ev));
+                .OnSuccess(ev => SendEmail(ev));
 
             return Task.CompletedTask;
         }
