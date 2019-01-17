@@ -1,0 +1,17 @@
+<div class="container">
+    <mat-accordion class="expansion-container">
+        <mat-expansion-panel *ngFor="let question of questions;let i = index">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{question}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="question-form">
+                <mat-form-field style="width:80%">
+                    <input id="q{{i}}"matInput placeholder="answer" required>
+                </mat-form-field>
+                <button mat-button (click)="submit(i)">Submit</button>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

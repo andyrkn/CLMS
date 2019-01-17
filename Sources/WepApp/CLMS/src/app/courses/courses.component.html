@@ -1,0 +1,13 @@
+<div class="container">
+    <mat-card class="courses-card">
+        <mat-card-header>
+            <mat-card-title>Courses</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-action-list>
+                <mat-list-item *ngFor="let course of courses">{{course}}<mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-action-list>
+        </mat-card-content>
+    </mat-card>
+</div>
