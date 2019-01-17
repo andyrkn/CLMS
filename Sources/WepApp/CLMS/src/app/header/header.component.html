@@ -1,0 +1,11 @@
+<nav>
+  <ul>
+    <li style="float: left;"><a routerLink="home">Home</a></li>
+    <li><a routerLink="about">About</a></li>
+    <li *ngIf="!isLoggedIn"><a routerLink="login">Login</a></li>
+    <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
+    <li><a routerLink="courses">Courses</a></li>
+    <li><a routerLink="questions">Questions</a></li>
+    <li><a routerLink="administration">Administration</a></li>
+  </ul>
+</nav>

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class QuestionsService {
 
-    private readonly _questions = '/questions';
+    private readonly _questions = ':5004/api/questions';
     constructor(private httpClient: HttpClient) {
     }
 

@@ -15,6 +15,7 @@
         </mat-form-field>
         <button mat-button (click)="login()">Login</button>
       </div>
+      <p *ngIf="invalidData" style="color: red;"><b>Invalid Credentials</b></p>
     </mat-card-content>
   </mat-card>
 </div>

@@ -19,6 +19,8 @@ import { QuestionsComponent } from './questions/questions.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { QuestionsService } from './services/questions.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './services/user.service';
+import { HeaderComponent } from './header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     CoursesComponent,
     AboutComponent,
     QuestionsComponent,
-    AdministrationComponent
+    AdministrationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     HttpClientModule
   ],
-  providers: [DataService, QuestionsService],
+  providers: [DataService, QuestionsService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

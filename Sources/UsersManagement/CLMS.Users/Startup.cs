@@ -64,9 +64,9 @@ namespace CLMS.Users
                 app.UseHsts();
             }
 
+            app.UseCors(UsersPolicy);
             app.UseMessageBusForDomainEvents(typeof(BusinessLayer).Assembly);
             app.UseMiddleware<JwtMiddleware>();
-            app.UseCors(UsersPolicy);
             app.UseHttpsRedirection();
 
 

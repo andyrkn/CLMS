@@ -1,3 +1,3 @@
 export class ServerConfig {
-    public static readonly endpoint: string = 'http://localhost:5004/api';
+    public static readonly endpoint: string = 'http://localhost';
 }
