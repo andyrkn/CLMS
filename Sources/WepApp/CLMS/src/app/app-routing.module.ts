@@ -7,21 +7,30 @@ import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { AdministrationComponent } from './administration/administration.component';
+import { AddCourseComponent } from './courses/add-course/add-course.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
-  }, {
+  }, 
+  {
     path: 'login',
     component: LoginComponent
-  }, {
+  }, 
+  {
     path: 'register',
     component: RegisterComponent
-  }, {
+  }, 
+  {
     path: 'courses',
     component: CoursesComponent
-  }, {
+  },
+  {
+    path: 'courses/add',
+    component: AddCourseComponent
+  },  
+  {
     path: 'about',
     component: AboutComponent
   },

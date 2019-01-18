@@ -4,7 +4,7 @@
             <mat-card-title>Courses</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <button *ngIf="isAdmin" mat-button (click)="AddCourse()">Add course</button>
+            <a *ngIf="isAdmin" mat-button [routerLink]="'add'">Add course</a>
             <mat-action-list>
                 <mat-list-item *ngFor="let course of courses">{{course}}<mat-divider></mat-divider>
                 </mat-list-item>

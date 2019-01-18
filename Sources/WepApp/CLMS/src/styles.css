@@ -2,3 +2,51 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.inputlength {
+    width: 80%;
+}
+
+.container {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width:2000px) {
+    .container {
+        margin-top: 10%;
+    }
+}
+
+@media screen and (max-width:140px) {
+    .container {
+        margin-top: 10%;
+    }
+    .card {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .container {
+        margin-top: 15%;
+    }
+    .card {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .container {
+        margin-top: 25%;
+    }
+}
