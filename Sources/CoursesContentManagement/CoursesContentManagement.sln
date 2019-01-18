@@ -17,7 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Infrastructure", "02-Inf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Core", "03-Core", "{0322ACEF-E589-48CB-88BB-C7A440C712E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLMS.CoursesContentManagement.DependencyInjection", "CLMS.CoursesContentManagement.DependencyInjection\CLMS.CoursesContentManagement.DependencyInjection.csproj", "{921CC52A-5F23-48CB-8626-FB0CDE771B59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLMS.CoursesContentManagement.DependencyInjection", "CLMS.CoursesContentManagement.DependencyInjection\CLMS.CoursesContentManagement.DependencyInjection.csproj", "{921CC52A-5F23-48CB-8626-FB0CDE771B59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99-Tests", "99-Tests", "{DBD652CC-B036-4B25-BE87-A3FAC3710B00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLMS.CoursesContentManagement.Domain.Test", "CLMS.CoursesContentManagement.Domain.Test\CLMS.CoursesContentManagement.Domain.Test.csproj", "{CC8EF263-CDDC-445E-B705-F934C797D02D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLMS.CoursesContentManagement.Business.Test", "CLMS.CoursesContentManagement.Business.Test\CLMS.CoursesContentManagement.Business.Test.csproj", "{02BDA06D-4042-420E-B4B2-D17611CFD27F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +95,30 @@ Global
 		{921CC52A-5F23-48CB-8626-FB0CDE771B59}.Release|x64.Build.0 = Release|Any CPU
 		{921CC52A-5F23-48CB-8626-FB0CDE771B59}.Release|x86.ActiveCfg = Release|Any CPU
 		{921CC52A-5F23-48CB-8626-FB0CDE771B59}.Release|x86.Build.0 = Release|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Debug|x64.Build.0 = Debug|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Debug|x86.Build.0 = Debug|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Release|x64.ActiveCfg = Release|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Release|x64.Build.0 = Release|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Release|x86.ActiveCfg = Release|Any CPU
+		{CC8EF263-CDDC-445E-B705-F934C797D02D}.Release|x86.Build.0 = Release|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Debug|x64.Build.0 = Debug|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Debug|x86.Build.0 = Debug|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Release|x64.ActiveCfg = Release|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Release|x64.Build.0 = Release|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Release|x86.ActiveCfg = Release|Any CPU
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +129,8 @@ Global
 		{D53AF59B-F6E9-4ABA-A822-451A2D56F43F} = {CEC7457C-FDE3-43F9-B84A-65BB1749C8CC}
 		{3D7A317F-5E55-4A64-8AEA-1FC3C9BF6AF7} = {0322ACEF-E589-48CB-88BB-C7A440C712E4}
 		{921CC52A-5F23-48CB-8626-FB0CDE771B59} = {CEC7457C-FDE3-43F9-B84A-65BB1749C8CC}
+		{CC8EF263-CDDC-445E-B705-F934C797D02D} = {DBD652CC-B036-4B25-BE87-A3FAC3710B00}
+		{02BDA06D-4042-420E-B4B2-D17611CFD27F} = {DBD652CC-B036-4B25-BE87-A3FAC3710B00}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7543D9F6-A123-40C7-95E5-C51C6134FE6A}
