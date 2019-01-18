@@ -11,7 +11,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { AboutComponent } from './about/about.component';
 import {
   MatNativeDateModule, MatListModule, MatDividerModule, MatCardModule,
-  MatExpansionModule, MatInputModule, MatButtonModule
+  MatExpansionModule, MatInputModule, MatButtonModule, MatOptionModule, MatSelectModule
 } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DataService } from './services/data.service';
@@ -46,7 +46,9 @@ import { HeaderComponent } from './header/header.component';
     MatExpansionModule,
     MatInputModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [DataService, QuestionsService, UserService],
   bootstrap: [AppComponent]
