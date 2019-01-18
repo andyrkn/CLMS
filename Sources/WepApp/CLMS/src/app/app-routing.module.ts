@@ -32,6 +32,10 @@ const routes: Routes = [
   {
     path: 'administration',
     component: AdministrationComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 

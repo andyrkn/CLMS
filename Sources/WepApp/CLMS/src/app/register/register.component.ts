@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterModel } from '../services/Models/register.model';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  public registerModel = new RegisterModel();
+  public invalidData = false;
+  public rpassword: string;
+  public roles = ['Student', 'Professor', 'Admin'];
+
+  constructor(private userService: UserService) {
+    this.registerModel.Role = 1;
+  }
 
   public ngOnInit() {
   }
 
+  public updateRole(index) {
+    this.registerModel.Role = index + 1;
+  }
+
+  public register() {
+    this.userService.register(this.registerModel);
+  }
 }

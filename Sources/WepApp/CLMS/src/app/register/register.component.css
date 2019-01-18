@@ -1,0 +1,22 @@
+.inputlength {
+    width: 80%;
+}
+
+.container {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    width: 40%;
+}
+
+.register-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

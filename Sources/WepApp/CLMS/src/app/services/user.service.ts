@@ -4,6 +4,7 @@ import { ServerConfig } from './server.config';
 import { Observable, from, BehaviorSubject } from 'rxjs';
 import { UserModel } from './Models/user.model';
 import { Router } from '@angular/router';
+import { RegisterModel } from './Models/register.model';
 
 @Injectable()
 export class UserService {
@@ -68,10 +69,21 @@ export class UserService {
             }, (err) => { resolve(false); })));
     }
 
-    public register(user: UserModel) {
-        const body = JSON.stringify(user);
+    public register(user: RegisterModel) {
+
+        const body = {
+            'Email': user.Email,
+            'FirstName': user.FirstName,
+            'LastName': user.LastName,
+            'Password': user.Password,
+            'Role': user.Role
+        };
 
         this.httpClient.post(ServerConfig.endpoint + this._users, body).subscribe((data) => {
+            console.log('register succes');
+            this.login(user.Email, user.Password).subscribe();
+        }, (err) => {
+            console.log(err);
             this.login(user.Email, user.Password).subscribe();
         });
     }
