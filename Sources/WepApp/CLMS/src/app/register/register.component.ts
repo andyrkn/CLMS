@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
   public registerModel = new RegisterModel();
   public invalidData = false;
   public rpassword: string;
-  public roles = ['Student', 'Professor', 'Admin'];
+  public roles = ['Admin', 'Student', 'Professor' ];
 
   constructor(private userService: UserService) {
     this.registerModel.Role = 1;
@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public updateRole(index) {
-    this.registerModel.Role = index + 1;
+    this.registerModel.Role = index;
   }
 
   public register() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-courses',
@@ -7,13 +8,12 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
+  private isAdmin: boolean = false;
 
-  public courses: any;
-
-  constructor(private dataService: DataService) { }
+  constructor(private userService: UserService) { }
 
   public ngOnInit() {
-    this.courses = this.dataService.getCourses();
+    this.isAdmin = this.userService.role === "Admin" ;
   }
 
 }
