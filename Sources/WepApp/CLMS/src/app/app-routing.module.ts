@@ -8,7 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { AddCourseComponent } from './courses/add-course/add-course.component';
-
+import { AddQuestionComponent } from './questions/add-question/add-question.component';
 const routes: Routes = [
   {
     path: 'home',
@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'questions',
     component: QuestionsComponent
   },
+  {
+    path: 'questions/add',
+    component: AddQuestionComponent
+  }, 
   {
     path: 'administration',
     component: AdministrationComponent

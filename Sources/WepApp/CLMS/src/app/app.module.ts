@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { HeaderComponent } from './header/header.component';
 import { AddCourseComponent } from './courses/add-course/add-course.component';
+import { AddQuestionComponent } from './questions/add-question/add-question.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { AddCourseComponent } from './courses/add-course/add-course.component';
     QuestionsComponent,
     AdministrationComponent,
     HeaderComponent,
-    AddCourseComponent
+    AddCourseComponent,
+    AddQuestionComponent
   ],
   imports: [
     BrowserModule,

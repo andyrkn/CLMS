@@ -1,0 +1,16 @@
+<div class="container">
+  <mat-card class="question-card">
+    <mat-card-header>
+      <mat-card-title>Add question</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="question-form">
+        <mat-form-field class="inputlength">
+          <input matInput [(ngModel)]="name" placeholder="Name" required>
+        </mat-form-field>
+        <button mat-button (click)="submit()">Add question</button>
+        <p *ngIf="error">{{error}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
