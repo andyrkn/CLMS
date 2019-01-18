@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionsService } from '../services/questions.service';
+import { AnswerModel } from '../services/Models/answer.model';
 
 @Component({
     selector: 'app-questions',
@@ -22,6 +23,6 @@ export class QuestionsComponent implements OnInit {
 
     public submit(id) {
         const val = (document.getElementById('q' + id) as (HTMLInputElement)).value;
-        console.log(id, val);
+        this.questionsSerivce.AddAnswerForAQuestion(this.questions[id].id, val);
     }
 }

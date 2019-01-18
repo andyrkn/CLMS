@@ -24,7 +24,7 @@ namespace CLMS.QuestionsManagement.Controllers
         {
             var result = DispatchCommand(new AddNewAnswerCommand(id, User.GetUserEmail().Value, model));
 
-            return result.AsActionResult(() => Created("api/questions/answers", new { id }));
+            return result.AsActionResult(() => Created("api/questions/answers", new { questionId }));
         }
 
         [HttpPut("{id:guid}")]
