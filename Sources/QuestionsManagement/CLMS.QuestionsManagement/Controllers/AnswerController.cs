@@ -16,11 +16,11 @@ namespace CLMS.QuestionsManagement.Controllers
         {
         }
         [HttpPost]
-        public IActionResult AddAnswer([FromRoute] Guid id, [FromBody] AddAnswerModel model)
+        public IActionResult AddAnswer([FromRoute] Guid questionId, [FromBody] AddAnswerModel model)
         {
-            var result = DispatchCommand(new AddNewAnswerCommand(id, model));
+            var result = DispatchCommand(new AddNewAnswerCommand(questionId, model));
 
-            return result.AsActionResult(() => Created("api/questions/answers", new { id }));
+            return result.AsActionResult(() => Created("api/questions/answers", new { questionId }));
         }
         [HttpPut("{id:guid}")]
         public IActionResult ApproveAnswer([FromRoute] Guid id, [FromRoute] Guid questionId)
