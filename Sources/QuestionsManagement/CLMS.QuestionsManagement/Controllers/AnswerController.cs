@@ -28,7 +28,6 @@ namespace CLMS.QuestionsManagement.Controllers
         }
 
         [HttpPut("{id:guid}")]
-        [Authorize]
         public IActionResult ApproveAnswer([FromRoute] Guid id, [FromRoute] Guid questionId)
         {
             var result = DispatchCommand(new ApproveAnswerCommand(questionId,id));

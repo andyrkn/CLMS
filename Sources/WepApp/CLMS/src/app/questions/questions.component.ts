@@ -11,18 +11,23 @@ import { UserService } from '../services/user.service';
 })
 export class QuestionsComponent implements OnInit {
 
-
     public questions: any;
     public isAdminOrTeacher = true;
+    public email: string;
+
     constructor(private userService: UserService, private questionsSerivce: QuestionsService, private router: Router) {
     }
 
     public ngOnInit() {
+
+        this.isAdminOrTeacher = this.userService.role !== 'Student';
         console.log(this.userService.role);
-        console.log(this.isAdminOrTeacher);
         this.questionsSerivce.GetAllQuestionsWithAnswers().subscribe((data) => {
             this.questions = data;
+            console.log(this.questions);
         });
+
+        this.email = this.userService.getEmail();
     }
 
     public submit(id) {
@@ -32,5 +37,12 @@ export class QuestionsComponent implements OnInit {
 
     public changeRouteToAdd() {
         this.router.navigate(['/questions/add']);
+    }
+
+    public approve(i, j) {
+        // console.log(i, j);
+        if (this.isAdminOrTeacher) {
+            this.questionsSerivce.ApproveAnswerForAQuestion(this.questions[i].id, this.questions[i].answers[j].id).subscribe();
+        }
     }
 }

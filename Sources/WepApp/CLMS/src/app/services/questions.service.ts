@@ -41,11 +41,10 @@ export class QuestionsService {
     }
 
     public ApproveAnswerForAQuestion(questionId: any, answerId: any) {
-        this.httpClient
-            .put(ServerConfig.endpoint + this._questions + '/' + questionId + '/answer' + '/' + answerId, { headers: this.authHeaders() })
-            .subscribe();
-
+        return this.httpClient
+            .put(ServerConfig.endpoint + this._questions + '/' + questionId + '/answer' + '/' + answerId, { headers: this.authHeaders() });
     }
+
     private authHeaders(): HttpHeaders {
         return new HttpHeaders({ 'Authorization': `Bearer ${this.userService.getToken()}` });
     }

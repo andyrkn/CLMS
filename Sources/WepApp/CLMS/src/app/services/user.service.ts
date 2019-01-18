@@ -12,11 +12,11 @@ export class UserService {
     private readonly _users = ':5000/api/users';
     private readonly _usersLogin = ':5000/api/token';
     private readonly _token = 'TOKEN';
-    private readonly _role = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
+    private readonly _role = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
 
     private _loginSubject = new BehaviorSubject<boolean>(false);
 
-    constructor(private httpClient: HttpClient, private router: Router) { 
+    constructor(private httpClient: HttpClient, private router: Router) {
         this._loginSubject.next(this.getToken() ? true : false);
     }
 
