@@ -11,7 +11,8 @@
         <mat-form-field class="inputlength">
           <input matInput [(ngModel)]="teacherEmail" placeholder="Teacher email" required>
         </mat-form-field>
-        <button mat-button (click)="login()">Add course</button>
+        <button mat-button (click)="submit()">Add course</button>
+        <p *ngIf="error">{{error}}</p>
       </div>
     </mat-card-content>
   </mat-card>

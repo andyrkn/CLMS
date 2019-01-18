@@ -14,6 +14,7 @@ namespace CLMS.Courses.Controllers
         public CoursesController(IMediator mediator):base(mediator) { }
 
         [HttpGet]
+        [Authorize]
         public IActionResult GetAll()
         {
             var result = DispatchQuery<GetAllCoursesQuery, IEnumerable<CourseModel>>(new GetAllCoursesQuery());
@@ -21,6 +22,7 @@ namespace CLMS.Courses.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult CreateCourse([FromBody] AddCourseModel model)
         {
             var result = DispatchCommand(new CreateCourseCommand(model));

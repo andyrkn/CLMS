@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
 import { UserService } from '../services/user.service';
+import { CourseService } from '../services/course.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -8,12 +9,20 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  private isAdmin: boolean = false;
+  public courses: [] = [];
+  public isAdmin: boolean = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private courseService: CourseService, private router: Router) { }
 
   public ngOnInit() {
-    this.isAdmin = this.userService.role === "Admin" ;
+    this.isAdmin = this.userService.role === "Admin";
+
+    this.courseService.getAll().subscribe((data) => {
+      this.courses = data;
+    });
   }
 
+  public content(id: string) {
+    this.router.navigate(['/content', id]);
+  }
 }
