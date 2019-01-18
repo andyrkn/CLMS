@@ -1,6 +1,4 @@
 export class AnswerModel {
-    constructor(answerText: string, email: string) { this.AnswerText = answerText; this.Email = email; }
-
+    constructor(answerText: string) { this.AnswerText = answerText; }
     public AnswerText: string;
-    public Email: string;
 }

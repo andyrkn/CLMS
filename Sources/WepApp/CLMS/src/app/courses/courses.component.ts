@@ -15,7 +15,7 @@ export class CoursesComponent implements OnInit {
   constructor(private userService: UserService, private courseService: CourseService, private router: Router) { }
 
   public ngOnInit() {
-    this.isAdmin = this.userService.role === "Admin";
+    this.isAdmin = this.userService.role === 'Admin';
 
     this.courseService.getAll().subscribe((data) => {
       this.courses = data;

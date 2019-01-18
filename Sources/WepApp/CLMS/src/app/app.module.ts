@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { HeaderComponent } from './header/header.component';
 import { AddCourseComponent } from './courses/add-course/add-course.component';
+import { AddQuestionComponent } from './questions/add-question/add-question.component';
 import { CourseContentComponent } from './courses/course-content/course-content.component';
 import { AddContentComponent } from './course/add-content/add-content.component';
 @NgModule({
@@ -38,6 +39,7 @@ import { AddContentComponent } from './course/add-content/add-content.component'
     AddCourseComponent,
     CourseContentComponent,
     AddContentComponent
+    AddQuestionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { UserService } from "./user.service";
-import { ServerConfig } from "./server.config";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from './user.service';
+import { ServerConfig } from './server.config';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class CourseService {
@@ -13,8 +13,8 @@ export class CourseService {
 
     public create(name: string, email: string): Observable<any> {
         const model = {
-            "name": name,
-            "holderEmail": email
+            'name': name,
+            'holderEmail': email
         };
         return this.httpClient.post(ServerConfig.coursesDomain + this.courses, model, { headers: this.authHeaders() });
     }

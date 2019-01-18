@@ -9,46 +9,44 @@ import { QuestionModel } from './Models/question.model';
 @Injectable()
 export class QuestionsService {
 
-    private authHeaders;
 
     private readonly _questions = ':5004/api/questions';
     constructor(
         private httpClient: HttpClient,
         private userService: UserService) {
-
-        this.authHeaders = new HttpHeaders({ 'Authorization': this.userService.getToken() });
     }
 
-    public CreateQuestion(questionModel: QuestionModel) {
-        const body = { 'Name': questionModel.Name };
+    public CreateQuestion(questionName: string) {
+        const body = { 'Name': questionName };
 
-        this.httpClient.post(ServerConfig.endpoint + this._questions, body, { headers: this.authHeaders })
-            .subscribe((res) => {
-                console.log(res);
-            }, (err) => { console.log(err); });
+        return this.httpClient.post(ServerConfig.endpoint + this._questions, body, { headers: this.authHeaders() });
     }
 
     public GetAllQuestionsWithAnswers(): Observable<any> {
-        return this.httpClient.get(ServerConfig.endpoint + this._questions, { headers: this.authHeaders });
+        return this.httpClient.get(ServerConfig.endpoint + this._questions, { headers: this.authHeaders() });
     }
 
     public GetGuestionById(questionId): Observable<any> {
-        return this.httpClient.get(ServerConfig.endpoint + this._questions + '/' + questionId, { headers: this.authHeaders });
+        return this.httpClient.get(ServerConfig.endpoint + this._questions + '/' + questionId, { headers: this.authHeaders() });
     }
 
     public AddAnswerForAQuestion(questionId: string, answer: string) {
-        const answerModel = new AnswerModel(answer, this.userService.getEmail());
-        const body = { 'AnswerText': answerModel.AnswerText, 'Email': answerModel.Email };
+        const answerModel = new AnswerModel(answer);
+        const body = { 'AnswerText': answerModel.AnswerText };
 
-        this.httpClient.post(ServerConfig.endpoint + this._questions + '/' + questionId + '/answer', body, { headers: this.authHeaders })
+        this.httpClient.post(ServerConfig.endpoint + this._questions + '/' + questionId + '/answer', body, { headers: this.authHeaders() })
             .subscribe((res) => {
                 console.log(res);
             }, (err) => { console.log(err); });
     }
 
     public ApproveAnswerForAQuestion(questionId: any, answerId: any) {
-        this.httpClient
-            .put(ServerConfig.endpoint + this._questions + '/' + questionId + '/answer' + '/' + answerId, { headers: this.authHeaders })
-            .subscribe();
+        return this.httpClient
+            .put(ServerConfig.endpoint + this._questions + '/' + questionId + '/answer' + '/' + answerId, { headers: this.authHeaders() });
+    }
+
+    private authHeaders(): HttpHeaders {
+        return new HttpHeaders({ 'Authorization': `Bearer ${this.userService.getToken()}` });
     }
 }
+

@@ -1,4 +1,15 @@
 <div class="container">
+
+    <mat-card class="add-new-question-container" *ngIf="isAdminOrTeacher">
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="display-flex">
+                <button mat-button (click)="changeRouteToAdd()"> Create new question</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
     <mat-accordion class="expansion-container">
         <mat-expansion-panel *ngFor="let question of questions;let i = index">
             <mat-expansion-panel-header>
@@ -6,12 +17,38 @@
                     {{question.name}}
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="question-form">
+            <div class="question-form" *ngIf="!isAdminOrTeacher">
                 <mat-form-field style="width:80%">
                     <input id="q{{i}}" matInput placeholder="answer" required>
                 </mat-form-field>
                 <button mat-button (click)="submit(i)">Submit</button>
             </div>
+
+            <div *ngIf="isAdminOrTeacher">
+                <mat-selection-list>
+                    <mat-list-item *ngFor="let answer of question.answers;let j = index">
+                        <div class="question-form>">
+                            {{answer.answerText}}
+                            <button mat-button *ngIf="!answer.isApproved" (click)="approve(i,j)">Approve</button>
+                            <mat-divider></mat-divider>
+                        </div>
+                    </mat-list-item>
+                </mat-selection-list>
+            </div>
+
+            <div *ngIf="!isAdminOrTeacher">
+                <mat-selection-list>
+                    <mat-list-item *ngFor="let answer of question.answers;let j = index">
+                        <div *ngIf="email === answer.email" class="question-form>">
+                            {{answer.answerText}}
+                            <button mat-button *ngIf="!answer.isApproved">Pending</button>
+                            <button mat-button *ngIf="answer.isApproved">Teacher Approved</button>
+                            <mat-divider></mat-divider>
+                        </div>
+                    </mat-list-item>
+                </mat-selection-list>
+            </div>
+
         </mat-expansion-panel>
     </mat-accordion>
 </div>
