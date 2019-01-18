@@ -31,6 +31,11 @@ export class UserService {
     public getToken() {
         return localStorage.getItem(this._token);
     }
+
+    public getEmail() {
+        return localStorage.getItem('email');
+    }
+
     public get loginSubject() {
         return this._loginSubject.asObservable();
     }

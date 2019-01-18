@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ServerConfig } from './server.config';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
+import { AnswerModel } from './Models/answer.model';
 
 @Injectable()
 export class QuestionsService {
@@ -25,8 +26,15 @@ export class QuestionsService {
         return this.httpClient.get(ServerConfig.endpoint + this._questions + '/' + questionId, { headers: this.authHeaders });
     }
 
-    public AddAnswerForAQuestion(questionId: Observable<any>) {
-        return this.httpClient.get(ServerConfig.endpoint + this._questions + '/' + questionId, { headers: this.authHeaders });
+    public AddAnswerForAQuestion(questionId: Observable<any>, answer: string) {
+        const answerModel = new AnswerModel(answer, this.userService.getEmail());
+        const body = { 'AnswerText': answerModel.AnswerText, 'Email': answerModel.Email };
+
+        console.log(body, questionId);
+        this.httpClient.post(ServerConfig.endpoint + this._questions + '/' + questionId + '/answer', body, { headers: this.authHeaders })
+            .subscribe((res) => {
+                console.log(res);
+            }, (err) => { console.log(err); });
     }
 
     public ApproveAnswerForAQuestion(questionId: any, answerId: any) {
