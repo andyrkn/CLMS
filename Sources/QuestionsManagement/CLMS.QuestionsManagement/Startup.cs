@@ -64,6 +64,7 @@ namespace CLMS.Questions
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             app.UseCors(Policy);
             app.UseHttpsRedirection();
             app.UseMvc();

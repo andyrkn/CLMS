@@ -1,7 +1,9 @@
 ﻿using System;
 using CLMS.Kernel;
 using CLMS.Notification.Business;
+using CLMS.Notification.Extensions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CLMS.Notification.Controllers
@@ -15,19 +17,21 @@ namespace CLMS.Notification.Controllers
         }
 
         [HttpPost("{id:guid}/subscription")]
-        public IActionResult Subscribe([FromRoute] Guid id, [FromBody] SubscribeModel model)
+        [Authorize]
+        public IActionResult Subscribe([FromRoute] Guid id)
         {
-            var result = DispatchCommand(new SubscribeCommand(id, model));
+            var result = DispatchCommand(new SubscribeCommand(id, User.GetUserEmail().Value));
 
             return result.AsActionResult(() => Created("api/events", new {id}));
         }
 
         [HttpDelete("{id:guid}/subscription")]
-        public IActionResult Unsubscribe([FromRoute] Guid id, [FromBody] UnsubscribeModel model)
+        [Authorize]
+        public IActionResult Unsubscribe([FromRoute] Guid id)
         {
-            var result = DispatchCommand(new UnsubscribeCommand(id, model));
+            var result = DispatchCommand(new UnsubscribeCommand(id, User.GetUserEmail().Value));
 
-            return result.AsActionResult(() => Created("api/events", new {id}));
+            return result.AsActionResult(NoContent);
         }
     }
 }

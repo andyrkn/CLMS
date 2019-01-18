@@ -22,7 +22,7 @@ namespace CLMS.Notification.Business
             var eventOrNothing = eventRepository.GetById(request.EventId);
 
             return eventOrNothing.ToResult("Event not found")
-                .OnSuccess(ev => ev.Subscribe(request.Model.Email))
+                .OnSuccess(ev => ev.Subscribe(request.Email))
                 .OnSuccess(_ => eventRepository.Update(eventOrNothing.Value))
                 .OnSuccess(_ => eventRepository.SaveChanges());
         }

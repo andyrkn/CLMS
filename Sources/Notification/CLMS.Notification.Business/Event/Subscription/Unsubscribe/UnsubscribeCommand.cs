@@ -5,13 +5,13 @@ namespace CLMS.Notification.Business
 {
     public class UnsubscribeCommand : ICommand
     {
-        public UnsubscribeCommand(Guid eventId, UnsubscribeModel model)
+        public UnsubscribeCommand(Guid eventId, string email)
         {
             EventId = eventId;
-            Model = model;
+            Email = email;
         }
 
         public Guid EventId { get; }
-        public UnsubscribeModel Model { get; }
+        public string Email { get; }
     }
 }

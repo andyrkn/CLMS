@@ -5,13 +5,13 @@ namespace CLMS.Notification.Business
 {
     public class SubscribeCommand : ICommand
     {
-        public SubscribeCommand(Guid eventId, SubscribeModel model)
+        public SubscribeCommand(Guid eventId, string email)
         {
             EventId = eventId;
-            Model = model;
+            Email = email;
         }
 
         public Guid EventId { get; }
-        public SubscribeModel Model { get; }
+        public string Email { get; }
     }
 }

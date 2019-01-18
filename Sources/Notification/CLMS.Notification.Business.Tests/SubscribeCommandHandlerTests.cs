@@ -59,7 +59,7 @@ namespace CLMS.Notification.Business.Tests
 
         private SubscribeCommand Command()
         {
-            return new SubscribeCommand(eventId, new SubscribeModel {Email = email});
+            return new SubscribeCommand(eventId, email);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace CLMS.QuestionsManagement.Business.Answer.Add
             var questionOrNothing = questionRepository.GetById(request.QuestionId);
 
             return questionOrNothing.ToResult("Event not found")
-                .OnSuccess(q => q.Answered(request.Model.AnswerText, request.Model.Email))
+                .OnSuccess(q => q.Answered(request.Model.AnswerText, request.Email))
                 .OnSuccess(_ => questionRepository.Update(questionOrNothing.Value))
                 .OnSuccess(_ => questionRepository.SaveChanges());
         }

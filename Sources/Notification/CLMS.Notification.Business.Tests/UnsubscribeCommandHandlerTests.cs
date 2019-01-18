@@ -61,7 +61,7 @@ namespace CLMS.Notification.Business.Tests
 
         private UnsubscribeCommand Command()
         {
-            return new UnsubscribeCommand(eventId, new UnsubscribeModel {Email = email});
+            return new UnsubscribeCommand(eventId, email);
         }
     }
 }
