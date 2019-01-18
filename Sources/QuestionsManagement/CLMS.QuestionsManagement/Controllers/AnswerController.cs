@@ -20,9 +20,9 @@ namespace CLMS.QuestionsManagement.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult AddAnswer([FromRoute] Guid id, [FromBody] AddAnswerModel model)
+        public IActionResult AddAnswer([FromRoute] Guid questionId, [FromBody] AddAnswerModel model)
         {
-            var result = DispatchCommand(new AddNewAnswerCommand(id, User.GetUserEmail().Value, model));
+            var result = DispatchCommand(new AddNewAnswerCommand(questionId, User.GetUserEmail().Value, model));
 
             return result.AsActionResult(() => Created("api/questions/answers", new { questionId }));
         }
