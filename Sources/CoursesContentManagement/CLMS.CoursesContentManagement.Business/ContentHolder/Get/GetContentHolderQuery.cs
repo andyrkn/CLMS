@@ -6,11 +6,11 @@ namespace CLMS.CoursesContentManagement.Business
 {
     public class GetContentHolderQuery : IQuery<Result<ContentHolderDetailsModel>>
     {
-        public Guid ContentHolderId { get; }
+        public Guid ContentHolderOriginId { get; }
 
-        public GetContentHolderQuery(Guid contentHolderId)
+        public GetContentHolderQuery(Guid contentHolderOriginId)
         {
-            ContentHolderId = contentHolderId;
+            ContentHolderOriginId = contentHolderOriginId;
         }
     }
 }

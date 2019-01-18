@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CLMS.CoursesContentManagement.Business;
+using CLMS.CoursesContentManagement.Extensions;
 using CLMS.Kernel;
 using CSharpFunctionalExtensions;
 using MediatR;
@@ -40,7 +41,7 @@ namespace CLMS.CoursesContentManagement.Controllers
         [Authorize(Roles = "Teacher")]
         public IActionResult Add([FromRoute] Guid id, [FromBody] AddContentModel model)
         {
-            var result = DispatchCommand(new AddContentCommand(model, id));
+            var result = DispatchCommand(new AddContentCommand(model, User.GetUserEmail().Value, id));
             return result.AsActionResult(() => Created("api/content", model));
         }
     }

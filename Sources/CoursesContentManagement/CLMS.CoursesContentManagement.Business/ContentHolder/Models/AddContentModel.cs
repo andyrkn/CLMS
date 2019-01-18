@@ -5,8 +5,6 @@ namespace CLMS.CoursesContentManagement.Business
 {
     public class AddContentModel
     {
-        public string Email { get; set; }
-
         public string Description { get; set; }
 
         public IEnumerable<Guid> FilesIds { get; set; }

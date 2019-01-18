@@ -11,8 +11,8 @@ export class AddCourseComponent {
 	public teacherEmail: string = '';
 	public name: string = '';
 	public error: string = '';
+	
 	constructor(private courseService: CourseService, private router: Router) {
-
 	}
 
 	public submit(): void {

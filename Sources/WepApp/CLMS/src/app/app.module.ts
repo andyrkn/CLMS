@@ -22,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { HeaderComponent } from './header/header.component';
 import { AddCourseComponent } from './courses/add-course/add-course.component';
+import { CourseContentComponent } from './courses/course-content/course-content.component';
+import { AddContentComponent } from './course/add-content/add-content.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { AddCourseComponent } from './courses/add-course/add-course.component';
     QuestionsComponent,
     AdministrationComponent,
     HeaderComponent,
-    AddCourseComponent
+    AddCourseComponent,
+    CourseContentComponent,
+    AddContentComponent
   ],
   imports: [
     BrowserModule,

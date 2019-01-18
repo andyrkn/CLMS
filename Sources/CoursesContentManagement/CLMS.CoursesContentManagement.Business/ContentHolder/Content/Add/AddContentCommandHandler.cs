@@ -35,7 +35,7 @@ namespace CLMS.CoursesContentManagement.Business
             var content = Content.Create(model.Description, files);
 
             return contentHolder.ToResult("Content holder not found!")
-                .OnSuccess(x => x.AddContent(model.Email, content))
+                .OnSuccess(x => x.AddContent(request.Email, content))
                 .OnSuccess(() => contentHolderRepository.Update(contentHolder.Value))
                 .OnSuccess(() => contentHolderRepository.SaveChanges())
                 .OnSuccess(() => eventsDispatcher.Raise(new ContentAddedEvent

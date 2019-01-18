@@ -16,6 +16,7 @@ namespace CLMS.CoursesContentManagement.Persistance
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             new FileContentConfiguration().Configure(modelBuilder.Entity<FileContent>());
+            new ContentHolderConfiguration().Configure(modelBuilder.Entity<ContentHolder>());
         }
     }
 }
