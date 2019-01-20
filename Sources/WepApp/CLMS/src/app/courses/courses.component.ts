@@ -23,6 +23,6 @@ export class CoursesComponent implements OnInit {
   }
 
   public content(id: string) {
-    this.router.navigate(['/content', id]);
+    this.router.navigate(['courses/content', id]);
   }
 }

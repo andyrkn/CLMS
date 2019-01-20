@@ -1,0 +1,12 @@
+.courses-card {
+    max-width: 80%;
+    min-width: 60%;
+}
+
+.container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

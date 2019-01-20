@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using CLMS.CoursesContentManagement.Domain;
 using CSharpFunctionalExtensions;
 using EnsureThat;
@@ -23,7 +24,9 @@ namespace CLMS.CoursesContentManagement.Business.ContentHolder.Get
         {
             EnsureArg.IsNotNull(request);
 
-            var contentHolder = contentHolderRepository.GetById(request.ContentHolderId);
+            Maybe<Domain.ContentHolder> contentHolder = contentHolderRepository
+                .GetAll()
+                .FirstOrDefault(x => x.OriginId == request.ContentHolderOriginId);
 
             return contentHolder.ToResult("Content holder not found!")
                 .Map(x => mapper.Map<ContentHolderDetailsModel>(x));

@@ -9,6 +9,9 @@ import { QuestionsComponent } from './questions/questions.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { AddCourseComponent } from './courses/add-course/add-course.component';
 import { AddQuestionComponent } from './questions/add-question/add-question.component';
+import { CourseContentComponent } from './courses/course-content/course-content.component';
+import { AddContentComponent } from './course/add-content/add-content.component';
+
 const routes: Routes = [
   {
     path: 'home',
@@ -29,7 +32,15 @@ const routes: Routes = [
   {
     path: 'courses/add',
     component: AddCourseComponent
-  },  
+  },
+  {
+    path: 'courses/content/:id',
+    component: CourseContentComponent
+  }, 
+  {
+    path: 'courses/content/:id/add-content',
+    component: AddContentComponent
+  }, 
   {
     path: 'about',
     component: AboutComponent

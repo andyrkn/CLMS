@@ -23,6 +23,8 @@ import { UserService } from './services/user.service';
 import { HeaderComponent } from './header/header.component';
 import { AddCourseComponent } from './courses/add-course/add-course.component';
 import { AddQuestionComponent } from './questions/add-question/add-question.component';
+import { CourseContentComponent } from './courses/course-content/course-content.component';
+import { AddContentComponent } from './course/add-content/add-content.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,8 @@ import { AddQuestionComponent } from './questions/add-question/add-question.comp
     AdministrationComponent,
     HeaderComponent,
     AddCourseComponent,
+    CourseContentComponent,
+    AddContentComponent
     AddQuestionComponent
   ],
   imports: [

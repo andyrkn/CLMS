@@ -1,0 +1,18 @@
+<div class="container">
+  <mat-card class="courses-card">
+    <mat-card-header>
+      <mat-card-title>Course: {{content?.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <a *ngIf="ownsCourse" mat-button [routerLink]="'add'">Add content</a>
+      <ng-container *ngIf="course?.contents.length === 0">
+        <p>No content!</p>
+      </ng-container>
+      <ng-container>
+        <div *ngFor="let content of course?.contents">
+          
+        </div>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+</div>
