@@ -54,7 +54,7 @@ namespace CLMS.CoursesContentManagement.Controllers
             var result = DispatchCommand<CreateFileCommand, string>(new CreateFileCommand(file.FileName,
                 file.FileName.Split('.').Last(), fileConntentAsBytes));
             return result.AsActionResult(filename =>
-                CreatedAtRoute(nameof(GetFile), new {fileName = filename}, new {name = filename}));
+                Created("api/file", new { fileName = filename }));
         }
     }
 }

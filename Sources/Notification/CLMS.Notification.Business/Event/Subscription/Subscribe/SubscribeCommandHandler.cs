@@ -2,6 +2,7 @@
 using CSharpFunctionalExtensions;
 using EnsureThat;
 using MediatR;
+using System.Linq;
 
 namespace CLMS.Notification.Business
 {
@@ -19,7 +20,7 @@ namespace CLMS.Notification.Business
         {
             EnsureArg.IsNotNull(request);
 
-            var eventOrNothing = eventRepository.GetById(request.EventId);
+            Maybe<Domain.Entities.Event> eventOrNothing = eventRepository.GetAll().FirstOrDefault(x => x.OriginId == request.EventId);
 
             return eventOrNothing.ToResult("Event not found")
                 .OnSuccess(ev => ev.Subscribe(request.Email))

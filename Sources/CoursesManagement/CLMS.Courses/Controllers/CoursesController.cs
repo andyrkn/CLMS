@@ -26,7 +26,7 @@ namespace CLMS.Courses.Controllers
         public IActionResult CreateCourse([FromBody] AddCourseModel model)
         {
             var result = DispatchCommand(new CreateCourseCommand(model));
-            return result.AsActionResult(Ok);
+            return result.AsActionResult(() => Created("api/courses", new { }));
         }
     }
 }
